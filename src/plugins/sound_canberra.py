@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from pybitmessage.bitmessageqt import sound
+from pylmessage.lmessageqt import sound
 
 import pycanberra
 

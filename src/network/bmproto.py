@@ -502,8 +502,8 @@ class BMProto(AdvancedDispatcher, ObjectTracker):
                 network.connectionpool.BMConnectionPool().inboundConnections or \
                 len(network.connectionpool.BMConnectionPool().inboundConnections) + \
                 len(network.connectionpool.BMConnectionPool().outboundConnections) > \
-                BMConfigParser().safeGetInt("bitmessagesettings", "maxtotalconnections") + \
-                BMConfigParser().safeGetInt("bitmessagesettings", "maxbootstrapconnections"):
+                BMConfigParser().safeGetInt("lmessagesettings", "maxtotalconnections") + \
+                BMConfigParser().safeGetInt("lmessagesettings", "maxbootstrapconnections"):
                 self.append_write_buf(protocol.assembleErrorMessage(fatal=2,
                     errorText="Server full, please try again later."))
                 logger.debug ("Closed connection to %s due to server full or duplicate inbound/outbound.",

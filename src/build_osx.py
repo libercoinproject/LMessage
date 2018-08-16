@@ -3,15 +3,15 @@ import os
 from PyQt4 import QtCore
 from setuptools import setup
 
-name = "Bitmessage"
-version = os.getenv("PYBITMESSAGEVERSION", "custom")
-mainscript = ["bitmessagemain.py"]
+name = "LMessage"
+version = os.getenv("PYLMESSAGEVERSION", "custom")
+mainscript = ["lmessagemain.py"]
 
 DATA_FILES = [
     ('', ['sslkeys', 'images']),
     ('bitmsghash', ['bitmsghash/bitmsghash.cl', 'bitmsghash/bitmsghash.so']),
     ('translations', glob('translations/*.qm')),
-    ('ui', glob('bitmessageqt/*.ui')),
+    ('ui', glob('lmessageqt/*.ui')),
     ('translations', glob(str(QtCore.QLibraryInfo.location(QtCore.QLibraryInfo.TranslationsPath)) + '/qt_??.qm')),
     ('translations', glob(str(QtCore.QLibraryInfo.location(QtCore.QLibraryInfo.TranslationsPath)) + '/qt_??_??.qm')),
 ]
@@ -25,7 +25,7 @@ setup(
     options = dict(
         py2app = dict(
             includes = ['sip', 'PyQt4._qt'],
-            iconfile = "images/bitmessage.icns"
+            iconfile = "images/lmessage.icns"
         )
     )
 )

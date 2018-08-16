@@ -1,4 +1,4 @@
-﻿# A simple upnp module to forward port for BitMessage
+﻿# A simple upnp module to forward port for LMessage
 # Reference: http://mattscodecave.com/posts/using-python-and-upnp-to-forward-a-port
 import httplib
 from random import randint
@@ -181,7 +181,7 @@ class uPnPThread(threading.Thread, StoppableThread):
     def __init__ (self):
         threading.Thread.__init__(self, name="uPnPThread")
         try:
-            self.extPort = BMConfigParser().getint('bitmessagesettings', 'extport')
+            self.extPort = BMConfigParser().getint('lmessagesettings', 'extport')
         except:
             self.extPort = None
         self.localIP = self.getLocalIP()
@@ -209,8 +209,8 @@ class uPnPThread(threading.Thread, StoppableThread):
             if not bound:
                 time.sleep(1)
 
-        self.localPort = BMConfigParser().getint('bitmessagesettings', 'port')
-        while state.shutdown == 0 and BMConfigParser().safeGetBoolean('bitmessagesettings', 'upnp'):
+        self.localPort = BMConfigParser().getint('lmessagesettings', 'port')
+        while state.shutdown == 0 and BMConfigParser().safeGetBoolean('lmessagesettings', 'upnp'):
             if time.time() - lastSent > self.sendSleep and len(self.routers) == 0:
                 try:
                     self.sendSearchRouter()
@@ -218,7 +218,7 @@ class uPnPThread(threading.Thread, StoppableThread):
                     pass
                 lastSent = time.time()
             try:
-                while state.shutdown == 0 and BMConfigParser().safeGetBoolean('bitmessagesettings', 'upnp'):
+                while state.shutdown == 0 and BMConfigParser().safeGetBoolean('lmessagesettings', 'upnp'):
                     resp,(ip,port) = self.sock.recvfrom(1000)
                     if resp is None:
                         continue
@@ -296,10 +296,10 @@ class uPnPThread(threading.Thread, StoppableThread):
                 else:
                     extPort = randint(32767, 65535)
                 logger.debug("Attempt %i, requesting UPnP mapping for %s:%i on external port %i", i, localIP, self.localPort,  extPort)
-                router.AddPortMapping(extPort, self.localPort, localIP, 'TCP', 'BitMessage')
+                router.AddPortMapping(extPort, self.localPort, localIP, 'TCP', 'LMessage')
                 shared.extPort = extPort
                 self.extPort = extPort
-                BMConfigParser().set('bitmessagesettings', 'extport', str(extPort))
+                BMConfigParser().set('lmessagesettings', 'extport', str(extPort))
                 BMConfigParser().save()
                 break
             except UPnPError:

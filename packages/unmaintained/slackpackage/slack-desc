@@ -6,14 +6,14 @@
 # leave one space after the ':'.
 
             |-----handy-ruler--------------------------------------------------|
-pybitmessage: pybitmessage (Send encrypted messages)
-pybitmessage:
-pybitmessage: Bitmessage is a P2P communications protocol used to send
-pybitmessage: encrypted messages to another person or to many subscribers. It
-pybitmessage: is decentralized and trustless, meaning that you need-not
-pybitmessage: inherently trust any entities like root certificate authorities.
-pybitmessage: It uses strong authentication which means that the sender of a
-pybitmessage: message cannot be spoofed, and it aims to hide "non-content"
-pybitmessage: data, like the sender and receiver of messages, from passive
-pybitmessage: eavesdroppers like those running warrantless wiretapping
-pybitmessage: programs.
+pylmessage: pylmessage (Send encrypted messages)
+pylmessage:
+pylmessage: LMessage is a P2P communications protocol used to send
+pylmessage: encrypted messages to another person or to many subscribers. It
+pylmessage: is decentralized and trustless, meaning that you need-not
+pylmessage: inherently trust any entities like root certificate authorities.
+pylmessage: It uses strong authentication which means that the sender of a
+pylmessage: message cannot be spoofed, and it aims to hide "non-content"
+pylmessage: data, like the sender and receiver of messages, from passive
+pylmessage: eavesdroppers like those running warrantless wiretapping
+pylmessage: programs.

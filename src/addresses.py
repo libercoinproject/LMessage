@@ -6,7 +6,7 @@ from binascii import hexlify, unhexlify
 from debug import logger
 
 
-# There is another copy of this function in Bitmessagemain.py
+# There is another copy of this function in LMessagemain.py
 def convertIntToString(n):
     a = __builtins__.hex(n)
     if a[-1:] == 'L':

@@ -1,4 +1,4 @@
-pybitmessage (0.6.0-1) trusty; urgency=low
+pylmessage (0.6.0-1) trusty; urgency=low
 
   * Bugfixes
   * UI improvements
@@ -7,7 +7,7 @@ pybitmessage (0.6.0-1) trusty; urgency=low
 
  -- Peter Surda <dev@mailchuck.com>  Mon, 2 May 2016 16:25:00 +0200
 
-pybitmessage (0.4.4-1) utopic; urgency=low
+pylmessage (0.4.4-1) utopic; urgency=low
 
   * Added ability to limit network transfer rate
   * Updated to Protocol Version 3
@@ -16,7 +16,7 @@ pybitmessage (0.4.4-1) utopic; urgency=low
 
  -- Bob Mottram (4096 bits) <bob@robotics.uk.to>  Sun, 2 November 2014 12:55:00 +0100
 
-pybitmessage (0.4.3-1) saucy; urgency=low
+pylmessage (0.4.3-1) saucy; urgency=low
 
   * Support pyelliptic's updated HMAC algorithm. We'll remove support for the old method after an upgrade period.
   * Improved version check
@@ -37,7 +37,7 @@ pybitmessage (0.4.3-1) saucy; urgency=low
 
  -- Bob Mottram (4096 bits) <bob@robotics.uk.to>  Thu, 6 March 2014 20:23:00 +0100
 
-pybitmessage (0.4.2-1) saucy; urgency=low
+pylmessage (0.4.2-1) saucy; urgency=low
 
   * Exclude debian directory from orig.tar.gz
 
@@ -53,7 +53,7 @@ pybitmessage (0.4.2-1) saucy; urgency=low
   * Added option to show recent broadcasts when subscribing
 
   * Fixed issue: If Windows username contained an international character,
-    Bitmessage wouldn't start
+    LMessage wouldn't start
 
   * Added some code for FreeBSD compatibility
 
@@ -100,7 +100,7 @@ pybitmessage (0.4.2-1) saucy; urgency=low
 
  -- Bob Mottram (4096 bits) <bob@robotics.uk.to>  Thu, 6 March 2014 20:23:00 +0100
 
-pybitmessage (0.4.1-1) raring; urgency=low
+pylmessage (0.4.1-1) raring; urgency=low
 
   * Fixed whitelist bug
 
@@ -113,7 +113,7 @@ pybitmessage (0.4.1-1) raring; urgency=low
 
  -- Bob Mottram (4096 bits) <bob@robotics.uk.to>  Sun, 29 September 2013 09:54:00 +0100
 
-pybitmessage (0.4.0-1) raring; urgency=low
+pylmessage (0.4.0-1) raring; urgency=low
 
   * Raised default demanded difficulty from 1 to 2 for new addresses
 
@@ -130,7 +130,7 @@ pybitmessage (0.4.0-1) raring; urgency=low
 
   * When replying using chan address, send to whole chan not just sender
 
-  * Refactored of the way PyBitmessage looks for interesting new objects
+  * Refactored of the way PyLMessage looks for interesting new objects
     in large inv messages from peers
 
   * Show inventory lookup rate on Network Status tab
@@ -143,7 +143,7 @@ pybitmessage (0.4.0-1) raring; urgency=low
   * Move duplicated SQL code into helper
 
   * Allow specification of alternate settings dir
-    via BITMESSAGE_HOME environment variable
+    via LMESSAGE_HOME environment variable
 
   * Removed use of gevent. Removed class_bgWorker.py
 
@@ -180,7 +180,7 @@ pybitmessage (0.4.0-1) raring; urgency=low
   * Added option in settings to allow sending to a mobile device
     (app not yet done)
 
-  * Added ability to start daemon mode when using Bitmessage as a module
+  * Added ability to start daemon mode when using LMessage as a module
 
   * Improved the way client detects locale
 
@@ -205,7 +205,7 @@ pybitmessage (0.4.0-1) raring; urgency=low
 
  -- Bob Mottram (4096 bits) <bob@robotics.uk.to>  Sat, 28 September 2013 09:54:00 +0100
 
-pybitmessage (0.3.5-1) raring; urgency=low
+pylmessage (0.3.5-1) raring; urgency=low
 
   * Inbox message retrieval API functions now also returns read status
 
@@ -256,7 +256,7 @@ pybitmessage (0.3.5-1) raring; urgency=low
 
  -- Bob Mottram (4096 bits) <bob@robotics.uk.to>  Mon, 29 July 2013 22:11:00 +0100
 
-pybitmessage (0.3.4-1) raring; urgency=low
+pylmessage (0.3.4-1) raring; urgency=low
 
   * Switched addr, msg, broadcast, and getpubkey message types
     to 8 byte time. Last remaining type is pubkey.
@@ -270,11 +270,11 @@ pybitmessage (0.3.4-1) raring; urgency=low
 
  -- Bob Mottram (4096 bits) <bob@robotics.uk.to>  Sun, 30 June 2013 11:23:00 +0100
 
-pybitmessage (0.3.3-1) raring; urgency=low
+pylmessage (0.3.3-1) raring; urgency=low
 
   * Remove inbox item from GUI when using API command trashMessage
 
-  * Add missing trailing semicolons to pybitmessage.desktop
+  * Add missing trailing semicolons to pylmessage.desktop
 
   * Ensure $(DESTDIR)/usr/bin exists
 
@@ -285,7 +285,7 @@ pybitmessage (0.3.3-1) raring; urgency=low
 
  -- Bob Mottram (4096 bits) <bob@robotics.uk.to>  Sat, 29 June 2013 11:23:00 +0100
 
-pybitmessage (0.3.211-1) raring; urgency=low
+pylmessage (0.3.211-1) raring; urgency=low
 
   * Removed multi-core proof of work
     as the multiprocessing module does not work well with
@@ -293,7 +293,7 @@ pybitmessage (0.3.211-1) raring; urgency=low
 
  -- Bob Mottram (4096 bits) <bob@robotics.uk.to>  Fri, 28 June 2013 11:23:00 +0100
 
-pybitmessage (0.3.2-1) raring; urgency=low
+pylmessage (0.3.2-1) raring; urgency=low
 
   * Bugfix: Remove remaining references to the old myapp.trayIcon
 
@@ -309,14 +309,14 @@ pybitmessage (0.3.2-1) raring; urgency=low
 
   * Added inv flooding attack mitigation
 
-  * On Linux, when selecting Show Bitmessage, do not maximize
+  * On Linux, when selecting Show LMessage, do not maximize
     automatically
 
-  * Store tray icons in bitmessage_icons_rc.py
+  * Store tray icons in lmessage_icons_rc.py
 
  -- Bob Mottram (4096 bits) <bob@robotics.uk.to>  Mon, 03 June 2013 20:17:00 +0100
 
-pybitmessage (0.3.1-1) raring; urgency=low
+pylmessage (0.3.1-1) raring; urgency=low
 
   * Added new API commands: getDeterministicAddress,
     addSubscription, deleteSubscription
@@ -326,7 +326,7 @@ pybitmessage (0.3.1-1) raring; urgency=low
 
   * Don't update the time we last communicated with a node unless
     the connection is fully established. This will allow us to
-    forget about active but non-Bitmessage nodes which have made
+    forget about active but non-LMessage nodes which have made
     it into our knownNodes file.
 
   * Prevent incoming connection flooding from crashing
@@ -340,7 +340,7 @@ pybitmessage (0.3.1-1) raring; urgency=low
 
   * Put all 'commit' commands within SQLLocks
 
-  * Bugfix: If address book label is blank, Bitmessage wouldn't
+  * Bugfix: If address book label is blank, LMessage wouldn't
     show message (bug introduced in 0.3.0)
 
   * Messaging menu item selects the oldest unread message
@@ -362,9 +362,9 @@ pybitmessage (0.3.1-1) raring; urgency=low
   * Changed Debian install directory and run script name based
     on Github issue #135
 
- -- Jonathan Warren (4096 bits) <jonathan@bitmessage.org>  Sat, 25 May 2013 12:06:00 +0100
+ -- Jonathan Warren (4096 bits) <jonathan@lmessage.org>  Sat, 25 May 2013 12:06:00 +0100
 
-pybitmessage (0.3.0-1) raring; urgency=low
+pylmessage (0.3.0-1) raring; urgency=low
 
   * Added new API function: getStatus
 
@@ -419,20 +419,20 @@ pybitmessage (0.3.0-1) raring; urgency=low
   * Fix typo when calling os.environ in the sys.platform=='darwin' case
 
   * Allow the cancelling of a message which is in the process of being
-    sent by trashing it then restarting Bitmessage
+    sent by trashing it then restarting LMessage
 
   * Bug fix: can't delete address from address book
 
  -- Bob Mottram (4096 bits) <bob@sluggish.dyndns.org>  Mon, 6 May 2013 12:06:00 +0100
 
-pybitmessage (0.2.8-1) unstable; urgency=low
+pylmessage (0.2.8-1) unstable; urgency=low
 
   * Fixed Ubuntu & OS X issue:
-    Bitmessage wouldn't receive any objects from peers after restart.
+    LMessage wouldn't receive any objects from peers after restart.
 
   * Inventory flush to disk when exiting program now vastly faster.
 
-  * Fixed address generation bug (kept Bitmessage from restarting).
+  * Fixed address generation bug (kept LMessage from restarting).
 
   * Improve deserialization of messages
     before processing (a 'best practice').
@@ -468,7 +468,7 @@ pybitmessage (0.2.8-1) unstable; urgency=low
 
  -- Bob Mottram (4096 bits) <bob@sluggish.dyndns.org>  Tue, 9 Apr 2013 17:44:00 +0100
 
-pybitmessage (0.2.7-1) unstable; urgency=low
+pylmessage (0.2.7-1) unstable; urgency=low
 
   * Added debian packaging
 

@@ -68,7 +68,7 @@ class AddressPassPhraseValidatorMixin():
             self.setError(_translate("AddressValidator", "Address already present as one of your identities."))
             return (QtGui.QValidator.Intermediate, 0)
         if addressGeneratorReturnValue[0] == 'chan name does not match address':
-            self.setError(_translate("AddressValidator", "Although the Bitmessage address you entered was valid, it doesn\'t match the chan name."))
+            self.setError(_translate("AddressValidator", "Although the LMessage address you entered was valid, it doesn\'t match the chan name."))
             return (QtGui.QValidator.Intermediate, 0)
         self.setOK(_translate("MainWindow", "Passphrase and address appear to be valid."))
 
@@ -105,12 +105,12 @@ class AddressPassPhraseValidatorMixin():
 
             # version too high
             if decodeAddress(address)[0] == 'versiontoohigh':
-                self.setError(_translate("AddressValidator", "Address too new. Although that Bitmessage address might be valid, its version number is too new for us to handle. Perhaps you need to upgrade Bitmessage."))
+                self.setError(_translate("AddressValidator", "Address too new. Although that LMessage address might be valid, its version number is too new for us to handle. Perhaps you need to upgrade LMessage."))
                 return (QtGui.QValidator.Intermediate, pos)
     
             # invalid
             if decodeAddress(address)[0] != 'success':
-                self.setError(_translate("AddressValidator", "The Bitmessage address is not valid."))
+                self.setError(_translate("AddressValidator", "The LMessage address is not valid."))
                 return (QtGui.QValidator.Intermediate, pos)
 
         # this just disables the OK button without changing the feedback text

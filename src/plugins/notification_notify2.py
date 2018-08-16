@@ -4,11 +4,11 @@ import gi
 gi.require_version('Notify', '0.7')
 from gi.repository import Notify
 
-Notify.init('pybitmessage')
+Notify.init('pylmessage')
 
 def connect_plugin(title, subtitle, category, label, icon):
     if not icon:
-        icon = 'mail-message-new' if category == 2 else 'pybitmessage'
+        icon = 'mail-message-new' if category == 2 else 'pylmessage'
     connect_plugin.notification.update(title, subtitle, icon)
     connect_plugin.notification.show()
 

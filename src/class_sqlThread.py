@@ -48,7 +48,7 @@ class sqlThread(threading.Thread):
             self.cur.execute(
                 '''CREATE TABLE inventory (hash blob, objecttype int, streamnumber int, payload blob, expirestime integer, tag blob, UNIQUE(hash) ON CONFLICT REPLACE)''' )
             self.cur.execute(
-                '''INSERT INTO subscriptions VALUES('Bitmessage new releases/announcements','BM-GtovgYdgs7qXPkoYaRgrLFuFKz1SFpsw',1)''')
+                '''INSERT INTO subscriptions VALUES('LMessage new releases/announcements','BM-GtovgYdgs7qXPkoYaRgrLFuFKz1SFpsw',1)''')
             self.cur.execute(
                 '''CREATE TABLE settings (key blob, value blob, UNIQUE(key) ON CONFLICT REPLACE)''' )
             self.cur.execute( '''INSERT INTO settings VALUES('version','10')''')
@@ -71,9 +71,9 @@ class sqlThread(threading.Thread):
         # sqlThread will modify the pubkeys table and change
         # the settings version to 4.
         settingsversion = BMConfigParser().getint(
-            'bitmessagesettings', 'settingsversion')
+            'lmessagesettings', 'settingsversion')
 
-        # People running earlier versions of PyBitmessage do not have the
+        # People running earlier versions of PyLMessage do not have the
         # usedpersonally field in their pubkeys table. Let's add it.
         if settingsversion == 2:
             item = '''ALTER TABLE pubkeys ADD usedpersonally text DEFAULT 'no' '''
@@ -83,7 +83,7 @@ class sqlThread(threading.Thread):
 
             settingsversion = 3
 
-        # People running earlier versions of PyBitmessage do not have the
+        # People running earlier versions of PyLMessage do not have the
         # encodingtype field in their inbox and sent tables or the read field
         # in the inbox table. Let's add them.
         if settingsversion == 3:
@@ -103,7 +103,7 @@ class sqlThread(threading.Thread):
             settingsversion = 4
 
         BMConfigParser().set(
-            'bitmessagesettings', 'settingsversion', str(settingsversion))
+            'lmessagesettings', 'settingsversion', str(settingsversion))
         BMConfigParser().save()
 
         helper_startup.updateConfig()
@@ -138,11 +138,11 @@ class sqlThread(threading.Thread):
             logger.debug('Deleting all pubkeys from inventory. They will be redownloaded and then saved with the correct times.')
             self.cur.execute(
                 '''delete from inventory where objecttype = 'pubkey';''')
-            logger.debug('replacing Bitmessage announcements mailing list with a new one.')
+            logger.debug('replacing LMessage announcements mailing list with a new one.')
             self.cur.execute(
                 '''delete from subscriptions where address='BM-BbkPSZbzPwpVcYZpU4yHwf9ZPEapN5Zx' ''')
             self.cur.execute(
-                '''INSERT INTO subscriptions VALUES('Bitmessage new releases/announcements','BM-GtovgYdgs7qXPkoYaRgrLFuFKz1SFpsw',1)''')
+                '''INSERT INTO subscriptions VALUES('LMessage new releases/announcements','BM-GtovgYdgs7qXPkoYaRgrLFuFKz1SFpsw',1)''')
             logger.debug('Commiting.')
             self.conn.commit()
             logger.debug('Vacuuming message.dat. You might notice that the file size gets much smaller.')
@@ -216,7 +216,7 @@ class sqlThread(threading.Thread):
             self.cur.execute(item, parameters)
 
         # Add a new table: objectprocessorqueue with which to hold objects
-        # that have yet to be processed if the user shuts down Bitmessage.
+        # that have yet to be processed if the user shuts down LMessage.
         item = '''SELECT value FROM settings WHERE key='version';'''
         parameters = ''
         self.cur.execute(item, parameters)
@@ -343,7 +343,7 @@ class sqlThread(threading.Thread):
             self.cur.execute('''update settings set value=10 WHERE key='version';''')
 
         # Are you hoping to add a new option to the keys.dat file of existing
-        # Bitmessage users or modify the SQLite database? Add it right
+        # LMessage users or modify the SQLite database? Add it right
         # above this line!
 
         try:
@@ -360,12 +360,12 @@ class sqlThread(threading.Thread):
             self.conn.commit()
             if transmitdata == '':
                 logger.fatal('Problem: The version of SQLite you have cannot store Null values. Please download and install the latest revision of your version of Python (for example, the latest Python 2.7 revision) and try again.\n')
-                logger.fatal('PyBitmessage will now exit very abruptly. You may now see threading errors related to this abrupt exit but the problem you need to solve is related to SQLite.\n\n')
+                logger.fatal('PyLMessage will now exit very abruptly. You may now see threading errors related to this abrupt exit but the problem you need to solve is related to SQLite.\n\n')
                 os._exit(0)
         except Exception as err:
             if str(err) == 'database or disk is full':
                 logger.fatal('(While null value test) Alert: Your disk or data storage volume is full. sqlThread will now exit.')
-                queues.UISignalQueue.put(('alert', (tr._translate("MainWindow", "Disk full"), tr._translate("MainWindow", 'Alert: Your disk or data storage volume is full. Bitmessage will now exit.'), True)))
+                queues.UISignalQueue.put(('alert', (tr._translate("MainWindow", "Disk full"), tr._translate("MainWindow", 'Alert: Your disk or data storage volume is full. LMessage will now exit.'), True)))
                 os._exit(0)
             else:
                 logger.error(err)
@@ -385,7 +385,7 @@ class sqlThread(threading.Thread):
                 except Exception as err:
                     if str(err) == 'database or disk is full':
                         logger.fatal('(While VACUUM) Alert: Your disk or data storage volume is full. sqlThread will now exit.')
-                        queues.UISignalQueue.put(('alert', (tr._translate("MainWindow", "Disk full"), tr._translate("MainWindow", 'Alert: Your disk or data storage volume is full. Bitmessage will now exit.'), True)))
+                        queues.UISignalQueue.put(('alert', (tr._translate("MainWindow", "Disk full"), tr._translate("MainWindow", 'Alert: Your disk or data storage volume is full. LMessage will now exit.'), True)))
                         os._exit(0)
                 item = '''update settings set value=? WHERE key='lastvacuumtime';'''
                 parameters = (int(time.time()),)
@@ -401,7 +401,7 @@ class sqlThread(threading.Thread):
                 except Exception as err:
                     if str(err) == 'database or disk is full':
                         logger.fatal('(While committing) Alert: Your disk or data storage volume is full. sqlThread will now exit.')
-                        queues.UISignalQueue.put(('alert', (tr._translate("MainWindow", "Disk full"), tr._translate("MainWindow", 'Alert: Your disk or data storage volume is full. Bitmessage will now exit.'), True)))
+                        queues.UISignalQueue.put(('alert', (tr._translate("MainWindow", "Disk full"), tr._translate("MainWindow", 'Alert: Your disk or data storage volume is full. LMessage will now exit.'), True)))
                         os._exit(0)
             elif item == 'exit':
                 self.conn.close()
@@ -416,7 +416,7 @@ class sqlThread(threading.Thread):
                 except Exception as err:
                     if str(err) == 'database or disk is full':
                         logger.fatal('(while movemessagstoprog) Alert: Your disk or data storage volume is full. sqlThread will now exit.')
-                        queues.UISignalQueue.put(('alert', (tr._translate("MainWindow", "Disk full"), tr._translate("MainWindow", 'Alert: Your disk or data storage volume is full. Bitmessage will now exit.'), True)))
+                        queues.UISignalQueue.put(('alert', (tr._translate("MainWindow", "Disk full"), tr._translate("MainWindow", 'Alert: Your disk or data storage volume is full. LMessage will now exit.'), True)))
                         os._exit(0)
                 self.conn.close()
                 shutil.move(
@@ -432,7 +432,7 @@ class sqlThread(threading.Thread):
                 except Exception as err:
                     if str(err) == 'database or disk is full':
                         logger.fatal('(while movemessagstoappdata) Alert: Your disk or data storage volume is full. sqlThread will now exit.')
-                        queues.UISignalQueue.put(('alert', (tr._translate("MainWindow", "Disk full"), tr._translate("MainWindow", 'Alert: Your disk or data storage volume is full. Bitmessage will now exit.'), True)))
+                        queues.UISignalQueue.put(('alert', (tr._translate("MainWindow", "Disk full"), tr._translate("MainWindow", 'Alert: Your disk or data storage volume is full. LMessage will now exit.'), True)))
                         os._exit(0)
                 self.conn.close()
                 shutil.move(
@@ -449,7 +449,7 @@ class sqlThread(threading.Thread):
                 except Exception as err:
                     if str(err) == 'database or disk is full':
                         logger.fatal('(while deleteandvacuume) Alert: Your disk or data storage volume is full. sqlThread will now exit.')
-                        queues.UISignalQueue.put(('alert', (tr._translate("MainWindow", "Disk full"), tr._translate("MainWindow", 'Alert: Your disk or data storage volume is full. Bitmessage will now exit.'), True)))
+                        queues.UISignalQueue.put(('alert', (tr._translate("MainWindow", "Disk full"), tr._translate("MainWindow", 'Alert: Your disk or data storage volume is full. LMessage will now exit.'), True)))
                         os._exit(0)
             else:
                 parameters = helper_sql.sqlSubmitQueue.get()
@@ -462,7 +462,7 @@ class sqlThread(threading.Thread):
                 except Exception as err:
                     if str(err) == 'database or disk is full':
                         logger.fatal('(while cur.execute) Alert: Your disk or data storage volume is full. sqlThread will now exit.')
-                        queues.UISignalQueue.put(('alert', (tr._translate("MainWindow", "Disk full"), tr._translate("MainWindow", 'Alert: Your disk or data storage volume is full. Bitmessage will now exit.'), True)))
+                        queues.UISignalQueue.put(('alert', (tr._translate("MainWindow", "Disk full"), tr._translate("MainWindow", 'Alert: Your disk or data storage volume is full. LMessage will now exit.'), True)))
                         os._exit(0)
                     else:
                         logger.fatal('Major error occurred when trying to execute a SQL statement within the sqlThread. Please tell Atheros about this error message or post it in the forum! Error occurred while trying to execute statement: "%s"  Here are the parameters; you might want to censor this data with asterisks (***) as it can contain private information: %s. Here is the actual error message thrown by the sqlThread: %s', str(item), str(repr(parameters)),  str(err))

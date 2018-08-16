@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-APP=pybitmessage
+APP=pylmessage
 PREFIX=/usr
 build: build-stamp
 	make

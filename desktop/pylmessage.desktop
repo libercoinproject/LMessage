@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=PyLMessage
+GenericName=LMessage Client
+Comment=Send encrypted messages
+Exec=pylmessage %F
+Icon=pylmessage
+Terminal=false
+Categories=Office;Email;

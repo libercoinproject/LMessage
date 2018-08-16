@@ -1,4 +1,4 @@
-// bitmessage cracker, build with g++ or MSVS to a shared library, use included python code for usage under bitmessage
+// lmessage cracker, build with g++ or MSVS to a shared library, use included python code for usage under lmessage
 #ifdef _WIN32
 #include "Winsock.h"
 #include "Windows.h"
@@ -124,7 +124,7 @@ void getnumthreads()
 	printf("Number of threads: %i\n", (int)numthreads);
 }
 
-extern "C" EXPORT unsigned long long BitmessagePOW(unsigned char * starthash, unsigned long long target)
+extern "C" EXPORT unsigned long long LMessagePOW(unsigned char * starthash, unsigned long long target)
 {
 	successval = 0;
 	max_val = target;

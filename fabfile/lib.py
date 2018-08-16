@@ -16,7 +16,7 @@ from fabvenv import virtualenv
 
 FABRIC_ROOT = os.path.dirname(__file__)
 PROJECT_ROOT = os.path.dirname(FABRIC_ROOT)
-VENV_ROOT = os.path.expanduser(os.path.join('~', '.virtualenvs', 'pybitmessage-devops'))
+VENV_ROOT = os.path.expanduser(os.path.join('~', '.virtualenvs', 'pylmessage-devops'))
 PYTHONPATH = os.path.join(PROJECT_ROOT, 'src',)
 
 

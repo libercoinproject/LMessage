@@ -335,7 +335,7 @@ class BMAddressWidget(BMTableWidgetItem, AccountMixin):
             return self.label + " (" + self.address + ")"
         elif role == QtCore.Qt.DecorationRole:
             if BMConfigParser().safeGetBoolean(
-                    'bitmessagesettings', 'useidenticons'):
+                    'lmessagesettings', 'useidenticons'):
                 return avatarize(self.address or self.label)
         elif role == QtCore.Qt.ForegroundRole:
             return self.accountBrush()

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APP=pybitmessage
+APP=pylmessage
 PREV_VERSION=0.4.4
 VERSION=0.6.0
 RELEASE=1

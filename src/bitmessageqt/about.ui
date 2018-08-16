@@ -20,7 +20,7 @@
 	  <string notr="true"/>
 	</property>
 	<property name="pixmap">
-	  <pixmap resource="bitmessage_icons.qrc">:/newPrefix/images/can-icon-24px.png</pixmap>
+	  <pixmap resource="lmessage_icons.qrc">:/newPrefix/images/can-icon-24px.png</pixmap>
 	</property>
 	<property name="alignment">
 	  <set>Qt::AlignCenter</set>
@@ -36,7 +36,7 @@
 	  </font>
 	</property>
 	<property name="text">
-	  <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Bitmessage/PyBitmessage/tree/:branch:&quot;&gt;&lt;span style=&quot;text-decoration:none; color:#0000ff;&quot;&gt;PyBitmessage :version:&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+	  <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/LMessage/PyLMessage/tree/:branch:&quot;&gt;&lt;span style=&quot;text-decoration:none; color:#0000ff;&quot;&gt;PyLMessage :version:&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
 	</property>
 	<property name="alignment">
 	  <set>Qt::AlignCenter</set>
@@ -46,7 +46,7 @@
     <item alignment="Qt::AlignLeft">
       <widget class="QLabel" name="label_2">
 	<property name="text">
-	  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Copyright © 2012-2016 Jonathan Warren&lt;br/&gt;Copyright © 2013-2017 The Bitmessage Developers&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+	  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Copyright © 2012-2016 Jonathan Warren&lt;br/&gt;Copyright © 2013-2017 The LMessage Developers&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
 	</property>
 	<property name="alignment">
 	  <set>Qt::AlignLeft</set>
@@ -89,7 +89,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="bitmessage_icons.qrc"/>
+  <include location="lmessage_icons.qrc"/>
  </resources>
  <connections>
   <connection>

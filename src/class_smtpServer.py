@@ -26,7 +26,7 @@ class smtpServerChannel(smtpd.SMTPChannel):
         if not arg:
             self.push('501 Syntax: HELO hostname')
             return
-        self.push('250-PyBitmessage %s' % softwareVersion)
+        self.push('250-PyLMessage %s' % softwareVersion)
         self.push('250 AUTH PLAIN')
 
     def smtp_AUTH(self, arg):
@@ -36,8 +36,8 @@ class smtpServerChannel(smtpd.SMTPChannel):
         authstring = arg[6:]
         try:
             decoded = base64.b64decode(authstring)
-            correctauth = "\x00" + BMConfigParser().safeGet("bitmessagesettings", "smtpdusername", "") + \
-                    "\x00" + BMConfigParser().safeGet("bitmessagesettings", "smtpdpassword", "")
+            correctauth = "\x00" + BMConfigParser().safeGet("lmessagesettings", "smtpdusername", "") + \
+                    "\x00" + BMConfigParser().safeGet("lmessagesettings", "smtpdpassword", "")
             logger.debug("authstring: %s / %s", correctauth, decoded)
             if correctauth == decoded:
                 self.auth = True
@@ -54,7 +54,7 @@ class smtpServerChannel(smtpd.SMTPChannel):
         smtpd.SMTPChannel.smtp_DATA(self, arg)
 
 
-class smtpServerPyBitmessage(smtpd.SMTPServer):
+class smtpServerPyLMessage(smtpd.SMTPServer):
     def handle_accept(self):
         pair = self.accept()
         if pair is not None:
@@ -64,7 +64,7 @@ class smtpServerPyBitmessage(smtpd.SMTPServer):
 
     def send(self, fromAddress, toAddress, subject, message):
         status, addressVersionNumber, streamNumber, ripe = decodeAddress(toAddress)
-        stealthLevel = BMConfigParser().safeGetInt('bitmessagesettings', 'ackstealthlevel')
+        stealthLevel = BMConfigParser().safeGetInt('lmessagesettings', 'ackstealthlevel')
         ackdata = genAckPayload(streamNumber, stealthLevel)
         sqlExecute(
             '''INSERT INTO sent VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)''',
@@ -82,7 +82,7 @@ class smtpServerPyBitmessage(smtpd.SMTPServer):
             0, # retryNumber
             'sent', # folder
             2, # encodingtype
-            min(BMConfigParser().getint('bitmessagesettings', 'ttl'), 86400 * 2) # not necessary to have a TTL higher than 2 days
+            min(BMConfigParser().getint('lmessagesettings', 'ttl'), 86400 * 2) # not necessary to have a TTL higher than 2 days
         )
 
         queues.workerQueue.put(('sendmessage', toAddress))
@@ -158,7 +158,7 @@ class smtpServer(threading.Thread, StoppableThread):
     def __init__(self, parent=None):
         threading.Thread.__init__(self, name="smtpServerThread")
         self.initStop()
-        self.server = smtpServerPyBitmessage(('127.0.0.1', LISTENPORT), None)
+        self.server = smtpServerPyLMessage(('127.0.0.1', LISTENPORT), None)
 
     def stopThread(self):
         super(smtpServer, self).stopThread()

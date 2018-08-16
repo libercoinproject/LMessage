@@ -19,7 +19,7 @@ StoreConfigFilesInSameDirectoryAsProgramByDefault = False
 
 def _loadTrustedPeer():
     try:
-        trustedPeer = BMConfigParser().get('bitmessagesettings', 'trustedpeer')
+        trustedPeer = BMConfigParser().get('lmessagesettings', 'trustedpeer')
     except ConfigParser.Error:
         # This probably means the trusted peer wasn't specified so we
         # can just leave it as None
@@ -35,7 +35,7 @@ def loadConfig():
         config.read(state.appdata + 'keys.dat')
         # state.appdata must have been specified as a startup option.
         needToCreateKeysFile = config.safeGet(
-            'bitmessagesettings', 'settingsversion') is None
+            'lmessagesettings', 'settingsversion') is None
         if not needToCreateKeysFile:
             print(
                 'Loading config files from directory specified'
@@ -43,7 +43,7 @@ def loadConfig():
     else:
         config.read(paths.lookupExeFolder() + 'keys.dat')
         try:
-            config.get('bitmessagesettings', 'settingsversion')
+            config.get('lmessagesettings', 'settingsversion')
             print 'Loading config files from same directory as program.'
             needToCreateKeysFile = False
             state.appdata = paths.lookupExeFolder()
@@ -53,7 +53,7 @@ def loadConfig():
             state.appdata = paths.lookupAppdataFolder()
             config.read(state.appdata + 'keys.dat')
             needToCreateKeysFile = config.safeGet(
-                'bitmessagesettings', 'settingsversion') is None
+                'lmessagesettings', 'settingsversion') is None
             if not needToCreateKeysFile:
                 print 'Loading existing config files from', state.appdata
 
@@ -61,61 +61,61 @@ def loadConfig():
 
         # This appears to be the first time running the program; there is
         # no config file (or it cannot be accessed). Create config file.
-        config.add_section('bitmessagesettings')
-        config.set('bitmessagesettings', 'settingsversion', '10')
-        config.set('bitmessagesettings', 'port', '8444')
-        config.set('bitmessagesettings', 'timeformat', '%%c')
-        config.set('bitmessagesettings', 'blackwhitelist', 'black')
-        config.set('bitmessagesettings', 'startonlogon', 'false')
+        config.add_section('lmessagesettings')
+        config.set('lmessagesettings', 'settingsversion', '10')
+        config.set('lmessagesettings', 'port', '8444')
+        config.set('lmessagesettings', 'timeformat', '%%c')
+        config.set('lmessagesettings', 'blackwhitelist', 'black')
+        config.set('lmessagesettings', 'startonlogon', 'false')
         if 'linux' in sys.platform:
-            config.set('bitmessagesettings', 'minimizetotray', 'false')
+            config.set('lmessagesettings', 'minimizetotray', 'false')
         # This isn't implimented yet and when True on
-        # Ubuntu causes Bitmessage to disappear while
+        # Ubuntu causes LMessage to disappear while
         # running when minimized.
         else:
-            config.set('bitmessagesettings', 'minimizetotray', 'true')
-        config.set('bitmessagesettings', 'showtraynotifications', 'true')
-        config.set('bitmessagesettings', 'startintray', 'false')
-        config.set('bitmessagesettings', 'socksproxytype', 'none')
-        config.set('bitmessagesettings', 'sockshostname', 'localhost')
-        config.set('bitmessagesettings', 'socksport', '9050')
-        config.set('bitmessagesettings', 'socksauthentication', 'false')
-        # config.set('bitmessagesettings', 'sockslisten', 'false')
-        config.set('bitmessagesettings', 'socksusername', '')
-        config.set('bitmessagesettings', 'sockspassword', '')
-        config.set('bitmessagesettings', 'keysencrypted', 'false')
-        config.set('bitmessagesettings', 'messagesencrypted', 'false')
+            config.set('lmessagesettings', 'minimizetotray', 'true')
+        config.set('lmessagesettings', 'showtraynotifications', 'true')
+        config.set('lmessagesettings', 'startintray', 'false')
+        config.set('lmessagesettings', 'socksproxytype', 'none')
+        config.set('lmessagesettings', 'sockshostname', 'localhost')
+        config.set('lmessagesettings', 'socksport', '9050')
+        config.set('lmessagesettings', 'socksauthentication', 'false')
+        # config.set('lmessagesettings', 'sockslisten', 'false')
+        config.set('lmessagesettings', 'socksusername', '')
+        config.set('lmessagesettings', 'sockspassword', '')
+        config.set('lmessagesettings', 'keysencrypted', 'false')
+        config.set('lmessagesettings', 'messagesencrypted', 'false')
         config.set(
-            'bitmessagesettings', 'defaultnoncetrialsperbyte',
+            'lmessagesettings', 'defaultnoncetrialsperbyte',
             str(defaults.networkDefaultProofOfWorkNonceTrialsPerByte))
         config.set(
-            'bitmessagesettings', 'defaultpayloadlengthextrabytes',
+            'lmessagesettings', 'defaultpayloadlengthextrabytes',
             str(defaults.networkDefaultPayloadLengthExtraBytes))
-        config.set('bitmessagesettings', 'minimizeonclose', 'false')
+        config.set('lmessagesettings', 'minimizeonclose', 'false')
         # config.set(
-        #     'bitmessagesettings', 'maxacceptablenoncetrialsperbyte', '0')
+        #     'lmessagesettings', 'maxacceptablenoncetrialsperbyte', '0')
         # config.set(
-        #     'bitmessagesettings', 'maxacceptablepayloadlengthextrabytes',
+        #     'lmessagesettings', 'maxacceptablepayloadlengthextrabytes',
         #     '0')
-        config.set('bitmessagesettings', 'dontconnect', 'true')
-        # config.set('bitmessagesettings', 'userlocale', 'system')
-        # config.set('bitmessagesettings', 'useidenticons', 'True')
+        config.set('lmessagesettings', 'dontconnect', 'true')
+        # config.set('lmessagesettings', 'userlocale', 'system')
+        # config.set('lmessagesettings', 'useidenticons', 'True')
         # config.set(
-        #     'bitmessagesettings', 'identiconsuffix',
+        #     'lmessagesettings', 'identiconsuffix',
         #     ''.join(helper_random.randomchoice(
         #         "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
         #         ) for x in range(12)
         #     ))  # a twelve character pseudo-password to salt the identicons
-        config.set('bitmessagesettings', 'replybelow', 'False')
-        config.set('bitmessagesettings', 'maxdownloadrate', '0')
-        config.set('bitmessagesettings', 'maxuploadrate', '0')
-        # config.set('bitmessagesettings', 'maxoutboundconnections', '8')
-        # config.set('bitmessagesettings', 'ttl', '367200')
+        config.set('lmessagesettings', 'replybelow', 'False')
+        config.set('lmessagesettings', 'maxdownloadrate', '0')
+        config.set('lmessagesettings', 'maxuploadrate', '0')
+        # config.set('lmessagesettings', 'maxoutboundconnections', '8')
+        # config.set('lmessagesettings', 'ttl', '367200')
 
         # UI setting to stop trying to send messages after X days/months
-        config.set('bitmessagesettings', 'stopresendingafterxdays', '')
-        config.set('bitmessagesettings', 'stopresendingafterxmonths', '')
-        # config.set('bitmessagesettings', 'timeperiod', '-1')
+        config.set('lmessagesettings', 'stopresendingafterxdays', '')
+        config.set('lmessagesettings', 'stopresendingafterxmonths', '')
+        # config.set('lmessagesettings', 'timeperiod', '-1')
 
         # Are you hoping to add a new option to the keys.dat file? You're in
         # the right place for adding it to users who install the software for
@@ -143,64 +143,64 @@ def loadConfig():
 
 def updateConfig():
     config = BMConfigParser()
-    settingsversion = config.getint('bitmessagesettings', 'settingsversion')
+    settingsversion = config.getint('lmessagesettings', 'settingsversion')
     if settingsversion == 1:
-        config.set('bitmessagesettings', 'socksproxytype', 'none')
-        config.set('bitmessagesettings', 'sockshostname', 'localhost')
-        config.set('bitmessagesettings', 'socksport', '9050')
-        config.set('bitmessagesettings', 'socksauthentication', 'false')
-        config.set('bitmessagesettings', 'socksusername', '')
-        config.set('bitmessagesettings', 'sockspassword', '')
-        config.set('bitmessagesettings', 'sockslisten', 'false')
-        config.set('bitmessagesettings', 'keysencrypted', 'false')
-        config.set('bitmessagesettings', 'messagesencrypted', 'false')
+        config.set('lmessagesettings', 'socksproxytype', 'none')
+        config.set('lmessagesettings', 'sockshostname', 'localhost')
+        config.set('lmessagesettings', 'socksport', '9050')
+        config.set('lmessagesettings', 'socksauthentication', 'false')
+        config.set('lmessagesettings', 'socksusername', '')
+        config.set('lmessagesettings', 'sockspassword', '')
+        config.set('lmessagesettings', 'sockslisten', 'false')
+        config.set('lmessagesettings', 'keysencrypted', 'false')
+        config.set('lmessagesettings', 'messagesencrypted', 'false')
         settingsversion = 2
     # let class_sqlThread update SQL and continue
     elif settingsversion == 4:
         config.set(
-            'bitmessagesettings', 'defaultnoncetrialsperbyte',
+            'lmessagesettings', 'defaultnoncetrialsperbyte',
             str(defaults.networkDefaultProofOfWorkNonceTrialsPerByte))
         config.set(
-            'bitmessagesettings', 'defaultpayloadlengthextrabytes',
+            'lmessagesettings', 'defaultpayloadlengthextrabytes',
             str(defaults.networkDefaultPayloadLengthExtraBytes))
         settingsversion = 5
 
     if settingsversion == 5:
         config.set(
-            'bitmessagesettings', 'maxacceptablenoncetrialsperbyte', '0')
+            'lmessagesettings', 'maxacceptablenoncetrialsperbyte', '0')
         config.set(
-            'bitmessagesettings', 'maxacceptablepayloadlengthextrabytes', '0')
+            'lmessagesettings', 'maxacceptablepayloadlengthextrabytes', '0')
         settingsversion = 7
 
     # Raise the default required difficulty from 1 to 2
     # With the change to protocol v3, this is obsolete.
     # if settingsversion == 6:
     #     if int(shared.config.get(
-    #             'bitmessagesettings', 'defaultnoncetrialsperbyte'
+    #             'lmessagesettings', 'defaultnoncetrialsperbyte'
     #     )) == defaults.networkDefaultProofOfWorkNonceTrialsPerByte:
     #         shared.config.set(
-    #             'bitmessagesettings', 'defaultnoncetrialsperbyte',
+    #             'lmessagesettings', 'defaultnoncetrialsperbyte',
     #             str(
     #                 defaults.networkDefaultProofOfWorkNonceTrialsPerByte
     #                 * 2)
     #         )
     #     settingsversion = 7
 
-    if not config.has_option('bitmessagesettings', 'sockslisten'):
-        config.set('bitmessagesettings', 'sockslisten', 'false')
+    if not config.has_option('lmessagesettings', 'sockslisten'):
+        config.set('lmessagesettings', 'sockslisten', 'false')
 
-    if not config.has_option('bitmessagesettings', 'userlocale'):
-        config.set('bitmessagesettings', 'userlocale', 'system')
+    if not config.has_option('lmessagesettings', 'userlocale'):
+        config.set('lmessagesettings', 'userlocale', 'system')
 
-    if not config.has_option('bitmessagesettings', 'sendoutgoingconnections'):
-        config.set('bitmessagesettings', 'sendoutgoingconnections', 'True')
+    if not config.has_option('lmessagesettings', 'sendoutgoingconnections'):
+        config.set('lmessagesettings', 'sendoutgoingconnections', 'True')
 
-    if not config.has_option('bitmessagesettings', 'useidenticons'):
-        config.set('bitmessagesettings', 'useidenticons', 'True')
-    if not config.has_option('bitmessagesettings', 'identiconsuffix'):
+    if not config.has_option('lmessagesettings', 'useidenticons'):
+        config.set('lmessagesettings', 'useidenticons', 'True')
+    if not config.has_option('lmessagesettings', 'identiconsuffix'):
         # acts as a salt
         config.set(
-            'bitmessagesettings', 'identiconsuffix',
+            'lmessagesettings', 'identiconsuffix',
             ''.join(helper_random.randomchoice(
                 "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
             ) for x in range(12)
@@ -209,32 +209,32 @@ def updateConfig():
     # Add settings to support no longer resending messages after
     # a certain period of time even if we never get an ack
     if settingsversion == 7:
-        config.set('bitmessagesettings', 'stopresendingafterxdays', '')
-        config.set('bitmessagesettings', 'stopresendingafterxmonths', '')
+        config.set('lmessagesettings', 'stopresendingafterxdays', '')
+        config.set('lmessagesettings', 'stopresendingafterxmonths', '')
         settingsversion = 8
 
     # With the change to protocol version 3, reset the user-settable
     # difficulties to 1
     if settingsversion == 8:
         config.set(
-            'bitmessagesettings', 'defaultnoncetrialsperbyte',
+            'lmessagesettings', 'defaultnoncetrialsperbyte',
             str(defaults.networkDefaultProofOfWorkNonceTrialsPerByte))
         config.set(
-            'bitmessagesettings', 'defaultpayloadlengthextrabytes',
+            'lmessagesettings', 'defaultpayloadlengthextrabytes',
             str(defaults.networkDefaultPayloadLengthExtraBytes))
         previousTotalDifficulty = int(
             config.getint(
-                'bitmessagesettings', 'maxacceptablenoncetrialsperbyte')
+                'lmessagesettings', 'maxacceptablenoncetrialsperbyte')
         ) / 320
         previousSmallMessageDifficulty = int(
             config.getint(
-                'bitmessagesettings', 'maxacceptablepayloadlengthextrabytes')
+                'lmessagesettings', 'maxacceptablepayloadlengthextrabytes')
         ) / 14000
         config.set(
-            'bitmessagesettings', 'maxacceptablenoncetrialsperbyte',
+            'lmessagesettings', 'maxacceptablenoncetrialsperbyte',
             str(previousTotalDifficulty * 1000))
         config.set(
-            'bitmessagesettings', 'maxacceptablepayloadlengthextrabytes',
+            'lmessagesettings', 'maxacceptablepayloadlengthextrabytes',
             str(previousSmallMessageDifficulty * 1000))
         settingsversion = 9
 
@@ -261,49 +261,49 @@ def updateConfig():
                     str(int(previousSmallMessageDifficulty * 1000)))
             except Exception:
                 continue
-        config.set('bitmessagesettings', 'maxdownloadrate', '0')
-        config.set('bitmessagesettings', 'maxuploadrate', '0')
+        config.set('lmessagesettings', 'maxdownloadrate', '0')
+        config.set('lmessagesettings', 'maxuploadrate', '0')
         settingsversion = 10
 
     # sanity check
     if config.safeGetInt(
-            'bitmessagesettings', 'maxacceptablenoncetrialsperbyte') == 0:
+            'lmessagesettings', 'maxacceptablenoncetrialsperbyte') == 0:
         config.set(
-            'bitmessagesettings', 'maxacceptablenoncetrialsperbyte',
+            'lmessagesettings', 'maxacceptablenoncetrialsperbyte',
             str(defaults.ridiculousDifficulty *
                 defaults.networkDefaultProofOfWorkNonceTrialsPerByte)
         )
     if config.safeGetInt(
-        'bitmessagesettings', 'maxacceptablepayloadlengthextrabytes'
+        'lmessagesettings', 'maxacceptablepayloadlengthextrabytes'
     ) == 0:
         config.set(
-            'bitmessagesettings', 'maxacceptablepayloadlengthextrabytes',
+            'lmessagesettings', 'maxacceptablepayloadlengthextrabytes',
             str(defaults.ridiculousDifficulty *
                 defaults.networkDefaultPayloadLengthExtraBytes)
         )
 
-    if not config.has_option('bitmessagesettings', 'onionhostname'):
-        config.set('bitmessagesettings', 'onionhostname', '')
-    if not config.has_option('bitmessagesettings', 'onionport'):
-        config.set('bitmessagesettings', 'onionport', '8444')
-    if not config.has_option('bitmessagesettings', 'onionbindip'):
-        config.set('bitmessagesettings', 'onionbindip', '127.0.0.1')
-    if not config.has_option('bitmessagesettings', 'smtpdeliver'):
-        config.set('bitmessagesettings', 'smtpdeliver', '')
+    if not config.has_option('lmessagesettings', 'onionhostname'):
+        config.set('lmessagesettings', 'onionhostname', '')
+    if not config.has_option('lmessagesettings', 'onionport'):
+        config.set('lmessagesettings', 'onionport', '8444')
+    if not config.has_option('lmessagesettings', 'onionbindip'):
+        config.set('lmessagesettings', 'onionbindip', '127.0.0.1')
+    if not config.has_option('lmessagesettings', 'smtpdeliver'):
+        config.set('lmessagesettings', 'smtpdeliver', '')
     if not config.has_option(
-            'bitmessagesettings', 'hidetrayconnectionnotifications'):
+            'lmessagesettings', 'hidetrayconnectionnotifications'):
         config.set(
-            'bitmessagesettings', 'hidetrayconnectionnotifications', 'false')
-    if config.safeGetInt('bitmessagesettings', 'maxoutboundconnections') < 1:
-        config.set('bitmessagesettings', 'maxoutboundconnections', '8')
+            'lmessagesettings', 'hidetrayconnectionnotifications', 'false')
+    if config.safeGetInt('lmessagesettings', 'maxoutboundconnections') < 1:
+        config.set('lmessagesettings', 'maxoutboundconnections', '8')
         print('WARNING: your maximum outbound connections must be a number.')
 
     # TTL is now user-specifiable. Let's add an option to save
     # whatever the user selects.
-    if not config.has_option('bitmessagesettings', 'ttl'):
-        config.set('bitmessagesettings', 'ttl', '367200')
+    if not config.has_option('lmessagesettings', 'ttl'):
+        config.set('lmessagesettings', 'ttl', '367200')
 
-    config.set('bitmessagesettings', 'settingsversion', str(settingsversion))
+    config.set('lmessagesettings', 'settingsversion', str(settingsversion))
     config.save()
 
 

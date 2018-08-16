@@ -13,4 +13,4 @@ export LC_TELEPHONE=de_DE.UTF-8
 export LC_MEASUREMENT=de_DE.UTF-8
 export LC_IDENTIFICATION=de_DE.UTF-8
 export LC_ALL=
-python2.7 src/bitmessagemain.py
+python2.7 src/lmessagemain.py

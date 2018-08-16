@@ -10,7 +10,7 @@ import sys
 if not hasattr(sys, 'hexversion') or sys.hexversion < 0x20300F0:
     sys.exit(
         'Python version: %s\n'
-        'PyBitmessage requires Python 2.7.4 or greater (but not Python 3)'
+        'PyLMessage requires Python 2.7.4 or greater (but not Python 3)'
         % sys.version
     )
 
@@ -243,7 +243,7 @@ def check_sqlite():
             if sqlite_version_number < 3000008:
                 logger.error(
                     'This version of SQLite is too old.'
-                    ' PyBitmessage requires SQLite 3.0.8 or later')
+                    ' PyLMessage requires SQLite 3.0.8 or later')
                 return False
             return True
         except sqlite3.Error:
@@ -319,7 +319,7 @@ def check_openssl():
         # introduced in 0.9.8b.
         if openssl_hexversion < 0x90802F:
             logger.error(
-                'This OpenSSL library is too old. PyBitmessage requires'
+                'This OpenSSL library is too old. PyLMessage requires'
                 ' OpenSSL 0.9.8b or later with AES, Elliptic Curves (EC),'
                 ' ECDH, and ECDSA enabled.')
             return False
@@ -327,7 +327,7 @@ def check_openssl():
         if len(matches) > 0:
             logger.error(
                 'This OpenSSL library is missing the following required'
-                ' features: %s. PyBitmessage requires OpenSSL 0.9.8b'
+                ' features: %s. PyLMessage requires OpenSSL 0.9.8b'
                 ' or later with AES, Elliptic Curves (EC), ECDH,'
                 ' and ECDSA enabled.', ', '.join(matches))
             return False
@@ -386,7 +386,7 @@ def check_pyqt():
     PyQt 4.8 or later.
     """
     QtCore = try_import(
-        'PyQt4.QtCore', 'PyBitmessage requires PyQt 4.8 or later and Qt 4.7 or later.')
+        'PyQt4.QtCore', 'PyLMessage requires PyQt 4.8 or later and Qt 4.7 or later.')
 
     if not QtCore:
         return False
@@ -396,12 +396,12 @@ def check_pyqt():
     passed = True
     if QtCore.PYQT_VERSION < 0x40800:
         logger.error(
-            'This version of PyQt is too old. PyBitmessage requries'
+            'This version of PyQt is too old. PyLMessage requries'
             ' PyQt 4.8 or later.')
         passed = False
     if QtCore.QT_VERSION < 0x40700:
         logger.error(
-            'This version of Qt is too old. PyBitmessage requries'
+            'This version of Qt is too old. PyLMessage requries'
             ' Qt 4.7 or later.')
         passed = False
     return passed
@@ -431,18 +431,18 @@ def check_dependencies(verbose=False, optional=False):
     has_all_dependencies = True
 
     # Python 2.7.4 is the required minimum.
-    # (https://bitmessage.org/forum/index.php?topic=4081.0)
+    # (https://lmessage.org/forum/index.php?topic=4081.0)
     # Python 3+ is not supported, but it is still useful to provide
     # information about our other requirements.
     logger.info('Python version: %s', sys.version)
     if sys.hexversion < 0x20704F0:
         logger.error(
-            'PyBitmessage requires Python 2.7.4 or greater'
+            'PyLMessage requires Python 2.7.4 or greater'
             ' (but not Python 3+)')
         has_all_dependencies = False
     if sys.hexversion >= 0x3000000:
         logger.error(
-            'PyBitmessage does not support Python 3+. Python 2.7.4'
+            'PyLMessage does not support Python 3+. Python 2.7.4'
             ' or greater is required.')
         has_all_dependencies = False
 
@@ -460,7 +460,7 @@ def check_dependencies(verbose=False, optional=False):
 
     if not has_all_dependencies:
         sys.exit(
-            'PyBitmessage cannot start. One or more dependencies are'
+            'PyLMessage cannot start. One or more dependencies are'
             ' unavailable.'
         )
 

@@ -11,7 +11,7 @@ frozen = getattr(sys,'frozen', None)
 def lookupExeFolder():
     if frozen:
         if frozen == "macosx_app":
-            # targetdir/Bitmessage.app/Contents/MacOS/Bitmessage
+            # targetdir/LMessage.app/Contents/MacOS/LMessage
             exeFolder = path.dirname(path.dirname(path.dirname(path.dirname(sys.executable)))) + path.sep
         else:
             exeFolder = path.dirname(sys.executable) + path.sep
@@ -22,16 +22,16 @@ def lookupExeFolder():
     return exeFolder
 
 def lookupAppdataFolder():
-    APPNAME = "PyBitmessage"
-    if "BITMESSAGE_HOME" in environ:
-        dataFolder = environ["BITMESSAGE_HOME"]
+    APPNAME = "PyLMessage"
+    if "LMESSAGE_HOME" in environ:
+        dataFolder = environ["LMESSAGE_HOME"]
         if dataFolder[-1] not in [path.sep, path.altsep]:
             dataFolder += path.sep
     elif sys.platform == 'darwin':
         if "HOME" in environ:
             dataFolder = path.join(environ["HOME"], "Library/Application Support/", APPNAME) + '/'
         else:
-            stringToLog = 'Could not find home folder, please report this message and your OS X version to the BitMessage Github.'
+            stringToLog = 'Could not find home folder, please report this message and your OS X version to the LMessage Github.'
             if 'logger' in globals():
                 logger.critical(stringToLog)
             else:

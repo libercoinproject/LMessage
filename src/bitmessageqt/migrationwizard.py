@@ -7,7 +7,7 @@ class MigrationWizardIntroPage(QtGui.QWizardPage):
         self.setTitle("Migrating configuration")
 
         label = QtGui.QLabel("This wizard will help you to migrate your configuration. "
-            "You can still keep using PyBitMessage once you migrate, the changes are backwards compatible.")
+            "You can still keep using PyLMessage once you migrate, the changes are backwards compatible.")
         label.setWordWrap(True)
 
         layout = QtGui.QVBoxLayout()
@@ -79,6 +79,6 @@ class Ui_MigrationWizard(QtGui.QWizard):
         page = MigrationWizardConclusionPage()
         self.setPage(10, page)
 
-        self.setWindowTitle("Migration from PyBitMessage wizard")
+        self.setWindowTitle("Migration from PyLMessage wizard")
         self.adjustSize()
         self.show()

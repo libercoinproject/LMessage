@@ -116,7 +116,7 @@ class TCPConnection(BMProto, TLSDispatcher):
         # We are going to share a maximum number of 1000 addrs (per overlapping
         # stream) with our peer. 500 from overlapping streams, 250 from the
         # left child stream, and 250 from the right child stream.
-        maxAddrCount = BMConfigParser().safeGetInt("bitmessagesettings", "maxaddrperstreamsend", 500)
+        maxAddrCount = BMConfigParser().safeGetInt("lmessagesettings", "maxaddrperstreamsend", 500)
 
         # init
         addressCount = 0
@@ -182,7 +182,7 @@ class TCPConnection(BMProto, TLSDispatcher):
             objectCount += 1
 
             # Remove -1 below when sufficient time has passed for users to
-            # upgrade to versions of PyBitmessage that accept inv with 50,000
+            # upgrade to versions of PyLMessage that accept inv with 50,000
             # items
             if objectCount >= BMProto.maxObjectCount - 1:
                 sendChunk()
@@ -276,7 +276,7 @@ class TCPServer(AdvancedDispatcher):
                     continue
             else:
                 if attempt > 0:
-                    BMConfigParser().set("bitmessagesettings", "port", str(port))
+                    BMConfigParser().set("lmessagesettings", "port", str(port))
                     BMConfigParser().save()
                 break
         self.destination = state.Peer(host, port)
@@ -296,8 +296,8 @@ class TCPServer(AdvancedDispatcher):
             state.ownAddresses[state.Peer(sock.getsockname()[0], sock.getsockname()[1])] = True
             if len(network.connectionpool.BMConnectionPool().inboundConnections) + \
                 len(network.connectionpool.BMConnectionPool().outboundConnections) > \
-                BMConfigParser().safeGetInt("bitmessagesettings", "maxtotalconnections") + \
-                BMConfigParser().safeGetInt("bitmessagesettings", "maxbootstrapconnections") + 10:
+                BMConfigParser().safeGetInt("lmessagesettings", "maxtotalconnections") + \
+                BMConfigParser().safeGetInt("lmessagesettings", "maxbootstrapconnections") + 10:
                 # 10 is a sort of buffer, in between it will go through the version handshake
                 # and return an error to the peer
                 logger.warning("Server full, dropping connection")

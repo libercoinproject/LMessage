@@ -11,7 +11,7 @@ import state
 from singleton import Singleton
 
 BMConfigDefaults = {
-    "bitmessagesettings": {
+    "lmessagesettings": {
         "maxaddrperstreamsend": 500,
         "maxbootstrapconnections": 20,
         "maxdownloadrate": 0,
@@ -19,7 +19,7 @@ BMConfigDefaults = {
         "maxtotalconnections": 200,
         "maxuploadrate": 0,
         "apiinterface": "127.0.0.1",
-        "apiport": 8442
+        "apiport": 1783
     },
     "threads": {
         "receive": 3,
@@ -44,7 +44,7 @@ BMConfigDefaults = {
 @Singleton
 class BMConfigParser(ConfigParser.SafeConfigParser):
     """Singleton class inherited from ConfigParser.SafeConfigParser
-    with additional methods specific to bitmessage config."""
+    with additional methods specific to lmessage config."""
 
     def set(self, section, option, value=None):
         if self._optcre is self.OPTCRE or value:
@@ -56,7 +56,7 @@ class BMConfigParser(ConfigParser.SafeConfigParser):
 
     def get(self, section, option, raw=False, variables=None):
         try:
-            if section == "bitmessagesettings" and option == "timeformat":
+            if section == "lmessagesettings" and option == "timeformat":
                 return ConfigParser.ConfigParser.get(
                     self, section, option, raw, variables)
             return ConfigParser.ConfigParser.get(
@@ -143,7 +143,7 @@ class BMConfigParser(ConfigParser.SafeConfigParser):
         except AttributeError:
             return True
 
-    def validate_bitmessagesettings_maxoutboundconnections(self, value):
+    def validate_lmessagesettings_maxoutboundconnections(self, value):
         try:
             value = int(value)
         except ValueError:

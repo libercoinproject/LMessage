@@ -66,7 +66,7 @@ class HTTPSRequestHandler(HTTPRequestHandler, TLSHandshake):
         if not hasattr(self, '_map'):
             asyncore.dispatcher.__init__(self, sock)
 #        self.tlsDone = False
-        TLSHandshake.__init__(self, sock=sock, certfile='/home/shurdeek/src/PyBitmessage/src/sslkeys/cert.pem', keyfile='/home/shurdeek/src/PyBitmessage/src/sslkeys/key.pem', server_side=True)
+        TLSHandshake.__init__(self, sock=sock, certfile='/home/shurdeek/src/PyLMessage/src/sslkeys/cert.pem', keyfile='/home/shurdeek/src/PyLMessage/src/sslkeys/key.pem', server_side=True)
         HTTPRequestHandler.__init__(self, sock)
 
     def handle_connect(self):

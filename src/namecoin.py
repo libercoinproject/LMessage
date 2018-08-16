@@ -1,7 +1,7 @@
 # pylint: disable=too-many-branches,protected-access
 """
 Copyright (C) 2013 by Daniel Kraft <d@domob.eu>
-This file is part of the Bitmessage project.
+This file is part of the LMessage project.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-.. todo:: from debug import logger crashes PyBitmessage due to a circular dependency. The debug module will also
+.. todo:: from debug import logger crashes PyLMessage due to a circular dependency. The debug module will also
 override/disable logging.getLogger() # loggers so module level logging functions are used instead
 """
 
@@ -40,7 +40,7 @@ import tr  # translate
 from bmconfigparser import BMConfigParser
 
 
-configSection = "bitmessagesettings"
+configSection = "lmessagesettings"
 
 
 class RPCError(Exception):
@@ -95,7 +95,7 @@ class namecoinConnection(object):
 
     def query(self, string):
         """
-        Query for the bitmessage address corresponding to the given identity
+        Query for the lmessage address corresponding to the given identity
         string.  If it doesn't contain a slash, id/ is prepended.  We return
         the result as (Error, Address) pair, where the Error is an error
         message to display or None in case of success.
@@ -132,16 +132,16 @@ class namecoinConnection(object):
             logger.exception("Namecoin query json exception")
             return (tr._translate("MainWindow", 'The name %1 has no valid JSON data.').arg(unicode(string)), None)
 
-        if "bitmessage" in val:
+        if "lmessage" in val:
             if "name" in val:
-                ret = "%s <%s>" % (val["name"], val["bitmessage"])
+                ret = "%s <%s>" % (val["name"], val["lmessage"])
             else:
-                ret = val["bitmessage"]
+                ret = val["lmessage"]
             return (None, ret)
         return (
             tr._translate(
                 "MainWindow",
-                'The name %1 has no associated Bitmessage address.').arg(
+                'The name %1 has no associated LMessage address.').arg(
                     unicode(string)),
             None)
 
@@ -231,7 +231,7 @@ class namecoinConnection(object):
         try:
             self.con.putrequest("POST", "/")
             self.con.putheader("Connection", "Keep-Alive")
-            self.con.putheader("User-Agent", "bitmessage")
+            self.con.putheader("User-Agent", "lmessage")
             self.con.putheader("Host", self.host)
             self.con.putheader("Content-Type", "application/json")
             self.con.putheader("Content-Length", str(len(data)))
@@ -293,7 +293,7 @@ def lookupNamecoinFolder():
         else:
             print(
                 "Could not find home folder, please report this message"
-                " and your OS X version to the BitMessage Github."
+                " and your OS X version to the LMessage Github."
             )
             sys.exit()
 

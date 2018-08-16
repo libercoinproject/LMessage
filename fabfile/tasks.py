@@ -1,6 +1,6 @@
 # pylint: disable=not-context-manager
 """
-Fabric tasks for PyBitmessage devops operations.
+Fabric tasks for PyLMessage devops operations.
 
 Note that where tasks declare params to be bools, they use coerce_bool() and so will accept any commandline (string)
 representation of true or false that coerce_bool() understands.
@@ -218,10 +218,10 @@ def test():
     with cd(PROJECT_ROOT):
         with virtualenv(VENV_ROOT):
 
-            run('pip uninstall -y pybitmessage')
+            run('pip uninstall -y pylmessage')
             run('python setup.py install')
 
-            run('pybitmessage -t')
+            run('pylmessage -t')
             run('python setup.py test')
 
 
@@ -294,7 +294,7 @@ def push_docs(path=None):
     """
 
     # Making assumptions
-    WEB_ROOT = path if path is not None else os.path.join('var', 'www', 'html', 'pybitmessage', 'en', 'latest')
+    WEB_ROOT = path if path is not None else os.path.join('var', 'www', 'html', 'pylmessage', 'en', 'latest')
     VERSION_ROOT = os.path.join(os.path.dirname(WEB_ROOT), softwareVersion)
 
     rsync_project(

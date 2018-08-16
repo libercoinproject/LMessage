@@ -167,4 +167,4 @@ if (not compiler or prereqs) and OPSYS in PACKAGE_MANAGER:
     if mandatory:
         sys.exit(1)
 else:
-    print("All the dependencies satisfied, you can install PyBitmessage")
+    print("All the dependencies satisfied, you can install PyLMessage")

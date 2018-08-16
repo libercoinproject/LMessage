@@ -30,8 +30,8 @@ class singleinstance:
 
         if not self.daemon and not state.curses:
             # Tells the already running (if any) application to get focus.
-            import bitmessageqt
-            bitmessageqt.init()
+            import lmessageqt
+            lmessageqt.init()
 
         self.lock()
 

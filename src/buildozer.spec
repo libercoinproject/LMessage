@@ -1,10 +1,10 @@
 [app]
 
 # (str) Title of your application
-title = PyBitmessage
+title = PyLMessage
 
 # (str) Package name
-package.name = PyBitmessage
+package.name = PyLMessage
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.test

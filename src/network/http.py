@@ -56,7 +56,7 @@ class Socks4aHttpConnection(Socks4aConnection, HttpConnection):
 if __name__ == "__main__":
     # initial fill
 
-    for host in ("bootstrap8080.bitmessage.org", "bootstrap8444.bitmessage.org"):
+    for host in ("bootstrap8080.lmessage.org", "bootstrap8444.lmessage.org"):
         proxy = Socks5Resolver(host=host)
         while len(asyncore.socket_map) > 0:
             print "loop %s, len %i" % (proxy.state, len(asyncore.socket_map))
@@ -69,7 +69,7 @@ if __name__ == "__main__":
             asyncore.loop(timeout=1, count=1)
         proxy.resolved()
 
-    for host in ("bitmessage.org",):
+    for host in ("lmessage.org",):
         direct = HttpConnection(host)
         while len(asyncore.socket_map) > 0:
 #            print "loop, state = %s" % (direct.state)

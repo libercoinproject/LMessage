@@ -23,10 +23,10 @@ from version import softwareVersion
 # this is BM support address going to Peter Surda
 OLD_SUPPORT_ADDRESS = 'BM-2cTkCtMYkrSPwFTpgcBrMrf5d8oZwvMZWK'
 SUPPORT_ADDRESS = 'BM-2cUdgkDDAahwPAU6oD2A7DnjqZz3hgY832'
-SUPPORT_LABEL = 'PyBitmessage support'
+SUPPORT_LABEL = 'PyLMessage support'
 SUPPORT_MY_LABEL = 'My new address'
 SUPPORT_SUBJECT = 'Support request'
-SUPPORT_MESSAGE = '''You can use this message to send a report to one of the PyBitmessage core developers regarding PyBitmessage or the mailchuck.com email service. If you are using PyBitmessage involuntarily, for example because your computer was infected with ransomware, this is not an appropriate venue for resolving such issues.
+SUPPORT_MESSAGE = '''You can use this message to send a report to one of the PyLMessage core developers regarding PyLMessage or the mailchuck.com email service. If you are using PyLMessage involuntarily, for example because your computer was infected with ransomware, this is not an appropriate venue for resolving such issues.
 
 Please describe what you are trying to do:
 
@@ -38,7 +38,7 @@ Please describe what happens instead:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Please write above this line and if possible, keep the information about your environment below intact.
 
-PyBitmessage version: {}
+PyLMessage version: {}
 Operating system: {}
 Architecture: {}bit
 Python Version: {}
@@ -115,12 +115,12 @@ def createSupportMessage(myapp):
     portablemode = "True" if state.appdata == paths.lookupExeFolder() else "False"
     cpow = "True" if proofofwork.bmpow else "False"
     openclpow = str(
-        BMConfigParser().safeGet('bitmessagesettings', 'opencl')
+        BMConfigParser().safeGet('lmessagesettings', 'opencl')
     ) if openclEnabled() else "None"
     locale = getTranslationLanguage()
     socks = BMConfigParser().safeGet(
-        'bitmessagesettings', 'socksproxytype', "N/A")
-    upnp = BMConfigParser().safeGet('bitmessagesettings', 'upnp', "N/A")
+        'lmessagesettings', 'socksproxytype', "N/A")
+    upnp = BMConfigParser().safeGet('lmessagesettings', 'upnp', "N/A")
     connectedhosts = len(network.stats.connectedHostsList())
 
     myapp.ui.textEditMessage.setText(str(QtGui.QApplication.translate("Support", SUPPORT_MESSAGE)).format(version, os, architecture, pythonversion, opensslversion, frozen, portablemode, cpow, openclpow, locale, socks, upnp, connectedhosts))

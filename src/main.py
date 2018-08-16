@@ -1,5 +1,5 @@
 """This module is for thread start."""
-from bitmessagemain import main
+from lmessagemain import main
 import state
 
 if __name__ == '__main__':

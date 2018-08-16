@@ -4,14 +4,14 @@ import gi
 gi.require_version('MessagingMenu', '1.0')  # noqa:E402
 from gi.repository import MessagingMenu
 
-from pybitmessage.bitmessageqt.utils import str_broadcast_subscribers
-from pybitmessage.tr import _translate
+from pylmessage.lmessageqt.utils import str_broadcast_subscribers
+from pylmessage.tr import _translate
 
 
 class IndicatorLibmessaging(object):
     def __init__(self, form):
         try:
-            self.app = MessagingMenu.App(desktop_id='pybitmessage.desktop')
+            self.app = MessagingMenu.App(desktop_id='pylmessage.desktop')
             self.app.register()
             self.app.connect('activate-source', self.activate)
         except:

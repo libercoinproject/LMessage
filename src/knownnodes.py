@@ -18,15 +18,7 @@ knownNodesTrimAmount = 2000
 knownNodesForgetRating = -0.5
 
 DEFAULT_NODES = (
-    state.Peer('5.45.99.75', 8444),
-    state.Peer('75.167.159.54', 8444),
-    state.Peer('95.165.168.168', 8444),
-    state.Peer('85.180.139.241', 8444),
-    state.Peer('158.222.217.190', 8080),
-    state.Peer('178.62.12.187', 8448),
-    state.Peer('24.188.198.204', 8111),
-    state.Peer('109.147.204.113', 1195),
-    state.Peer('178.11.46.221', 8444)
+   # add this later
 )
 
 
@@ -104,15 +96,15 @@ def readKnownNodes():
         createDefaultKnownNodes()
 
     config = BMConfigParser()
-    # if config.safeGetInt('bitmessagesettings', 'settingsversion') > 10:
+    # if config.safeGetInt('lmessagesettings', 'settingsversion') > 10:
     #     sys.exit(
-    #         'Bitmessage cannot read future versions of the keys file'
-    #         ' (keys.dat). Run the newer version of Bitmessage.')
+    #         'LMessage cannot read future versions of the keys file'
+    #         ' (keys.dat). Run the newer version of LMessage.')
 
     # your own onion address, if setup
-    onionhostname = config.safeGet('bitmessagesettings', 'onionhostname')
+    onionhostname = config.safeGet('lmessagesettings', 'onionhostname')
     if onionhostname and ".onion" in onionhostname:
-        onionport = config.safeGetInt('bitmessagesettings', 'onionport')
+        onionport = config.safeGetInt('lmessagesettings', 'onionport')
         if onionport:
             addKnownNode(1, state.Peer(onionhostname, onionport), is_self=True)
 

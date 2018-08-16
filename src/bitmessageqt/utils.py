@@ -11,7 +11,7 @@ str_chan = '[chan]'
 def identiconize(address):
     size = 48
 
-    if not BMConfigParser().getboolean('bitmessagesettings', 'useidenticons'):
+    if not BMConfigParser().getboolean('lmessagesettings', 'useidenticons'):
         return QtGui.QIcon()
 
     # If you include another identicon library, please generate an
@@ -19,7 +19,7 @@ def identiconize(address):
     # 3fd4bf901b9d4ea1394f0fb358725b28
 
     identicon_lib = BMConfigParser().safeGet(
-        'bitmessagesettings', 'identiconlib', 'qidenticon_two_x')
+        'lmessagesettings', 'identiconlib', 'qidenticon_two_x')
 
     # As an 'identiconsuffix' you could put "@bitmessge.ch" or "@bm.addr"
     # to make it compatible with other identicon generators. (Note however,
@@ -27,7 +27,7 @@ def identiconize(address):
     # It can be used as a pseudo-password to salt the generation of
     # the identicons to decrease the risk of attacks where someone creates
     # an address to mimic someone else's identicon.
-    identiconsuffix = BMConfigParser().get('bitmessagesettings', 'identiconsuffix')
+    identiconsuffix = BMConfigParser().get('lmessagesettings', 'identiconsuffix')
     if (identicon_lib[:len('qidenticon')] == 'qidenticon'):
         # print identicon_lib
         # originally by:
@@ -47,7 +47,7 @@ def identiconize(address):
         return idcon
     elif identicon_lib == 'pydenticon':
         # print identicon_lib
-        # Here you could load pydenticon.py (just put it in the "src" folder of your Bitmessage source)
+        # Here you could load pydenticon.py (just put it in the "src" folder of your LMessage source)
         from pydenticon import Pydenticon
         # It is not included in the source, because it is licensed under GPLv3
         # GPLv3 is a copyleft license that would influence our licensing

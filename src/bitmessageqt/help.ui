@@ -17,7 +17,7 @@
    <item row="1" column="0">
     <widget class="QLabel" name="labelHelpURI">
      <property name="text">
-      <string>&lt;a href=&quot;https://bitmessage.org/wiki/PyBitmessage_Help&quot;&gt;https://bitmessage.org/wiki/PyBitmessage_Help&lt;/a&gt;</string>
+      <string>&lt;a href=&quot;https://lmessage.org/wiki/PyLMessage_Help&quot;&gt;https://lmessage.org/wiki/PyLMessage_Help&lt;/a&gt;</string>
      </property>
      <property name="openExternalLinks">
       <bool>true</bool>
@@ -27,7 +27,7 @@
    <item row="0" column="0" colspan="2">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>As Bitmessage is a collaborative project, help can be found online in the Bitmessage Wiki:</string>
+      <string>As LMessage is a collaborative project, help can be found online in the LMessage Wiki:</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>

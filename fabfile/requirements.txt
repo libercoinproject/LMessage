@@ -1,5 +1,5 @@
-# These requirements are for the Fabric commands that support devops tasks for PyBitmessage, not for running
-# PyBitmessage itself.
+# These requirements are for the Fabric commands that support devops tasks for PyLMessage, not for running
+# PyLMessage itself.
 # TODO: Consider moving to an extra_requires group in setup.py
 
 pycodestyle==2.3.1  # https://github.com/PyCQA/pycodestyle/issues/741

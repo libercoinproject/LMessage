@@ -50,11 +50,11 @@ class singleCleaner(threading.Thread, StoppableThread):
         try:
             shared.maximumLengthOfTimeToBotherResendingMessages = (
                 float(BMConfigParser().get(
-                    'bitmessagesettings', 'stopresendingafterxdays')) *
+                    'lmessagesettings', 'stopresendingafterxdays')) *
                 24 * 60 * 60
             ) + (
                 float(BMConfigParser().get(
-                    'bitmessagesettings', 'stopresendingafterxmonths')) *
+                    'lmessagesettings', 'stopresendingafterxmonths')) *
                 (60 * 60 * 24 * 365)/12)
         except:
             # Either the user hasn't set stopresendingafterxdays and
@@ -156,7 +156,7 @@ class singleCleaner(threading.Thread, StoppableThread):
                              tr._translate(
                                  "MainWindow",
                                  'Alert: Your disk or data storage volume'
-                                 ' is full. Bitmessage will now exit.'),
+                                 ' is full. LMessage will now exit.'),
                                 True)
                             ))
                         # FIXME redundant?

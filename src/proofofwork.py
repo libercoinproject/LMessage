@@ -63,7 +63,7 @@ def _doFastPoW(target, initialHash):
     except:
         pool_size = 4
     try:
-        maxCores = BMConfigParser().getint('bitmessagesettings', 'maxcores')
+        maxCores = BMConfigParser().getint('lmessagesettings', 'maxcores')
     except:
         maxCores = 99999
     if pool_size > maxCores:
@@ -215,7 +215,7 @@ def run(target, initialHash):
             pass # fallback
     if paths.frozen == "macosx_app" or not paths.frozen:
         # on my (Peter Surda) Windows 10, Windows Defender
-        # does not like this and fights with PyBitmessage
+        # does not like this and fights with PyLMessage
         # over CPU, resulting in very slow PoW
         # added on 2015-11-29: multiprocesing.freeze_support() doesn't help
         try:
@@ -251,7 +251,7 @@ def init():
             # MSVS
             bso = ctypes.WinDLL(os.path.join(paths.codePath(), "bitmsghash", bitmsglib))
             logger.info("Loaded C PoW DLL (stdcall) %s", bitmsglib)
-            bmpow = bso.BitmessagePOW
+            bmpow = bso.LMessagePOW
             bmpow.restype = ctypes.c_ulonglong
             _doCPoW(2**63, "")
             logger.info("Successfully tested C PoW DLL (stdcall) %s", bitmsglib)
@@ -261,7 +261,7 @@ def init():
                 # MinGW
                 bso = ctypes.CDLL(os.path.join(paths.codePath(), "bitmsghash", bitmsglib))
                 logger.info("Loaded C PoW DLL (cdecl) %s", bitmsglib)
-                bmpow = bso.BitmessagePOW
+                bmpow = bso.LMessagePOW
                 bmpow.restype = ctypes.c_ulonglong
                 _doCPoW(2**63, "")
                 logger.info("Successfully tested C PoW DLL (cdecl) %s", bitmsglib)
@@ -285,7 +285,7 @@ def init():
             logger.info("Loaded C PoW DLL %s", bitmsglib)
     if bso:
         try:
-            bmpow = bso.BitmessagePOW
+            bmpow = bso.LMessagePOW
             bmpow.restype = ctypes.c_ulonglong
         except:
             bmpow = None

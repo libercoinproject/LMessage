@@ -48,8 +48,8 @@ except:
     logger.exception('Could not determine language or encoding')
 
 
-if BMConfigParser().has_option('bitmessagesettings', 'timeformat'):
-    time_format = BMConfigParser().get('bitmessagesettings', 'timeformat')
+if BMConfigParser().has_option('lmessagesettings', 'timeformat'):
+    time_format = BMConfigParser().get('lmessagesettings', 'timeformat')
     #Test the format string
     try:
         time.strftime(time_format)
@@ -112,8 +112,8 @@ def formatTimestamp(timestamp = None, as_unicode = True):
 
 def getTranslationLanguage():
     userlocale = None
-    if BMConfigParser().has_option('bitmessagesettings', 'userlocale'):
-        userlocale = BMConfigParser().get('bitmessagesettings', 'userlocale')
+    if BMConfigParser().has_option('lmessagesettings', 'userlocale'):
+        userlocale = BMConfigParser().get('lmessagesettings', 'userlocale')
 
     if userlocale in [None, '', 'system']:
         return language

@@ -5,7 +5,7 @@ import sys
 
 def resource_path(resFile):
     baseDir = paths.codePath()
-    for subDir in ["ui", "bitmessageqt"]:
+    for subDir in ["ui", "lmessageqt"]:
         if os.path.isdir(os.path.join(baseDir, subDir)) and os.path.isfile(os.path.join(baseDir, subDir, resFile)):
             return os.path.join(baseDir, subDir, resFile)
 

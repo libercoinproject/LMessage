@@ -1,7 +1,7 @@
 Operational Security
 ====================
 
-Bitmessage has many features that are designed to protect your anonymity during normal use. There are other things that you must or should do if you value your anonymity.
+LMessage has many features that are designed to protect your anonymity during normal use. There are other things that you must or should do if you value your anonymity.
 
 Castles in the sand
 -------------------
@@ -33,6 +33,6 @@ Your internet use can reveal metadata you wouldn't expect. This can be connected
 Cleaning history
 ----------------
 
- * Tell your browser not to store BitMessage addresses
+ * Tell your browser not to store LMessage addresses
  * Microsoft Office seems to offer the ability to define sensitive informations types. If browsers don't already they may in the future. Consider adding `BM-\w{x..y}`.
 

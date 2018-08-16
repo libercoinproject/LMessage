@@ -4,7 +4,7 @@ Developing
 Devops tasks
 ------------
 
-Bitmessage makes use of fabric_ to define tasks such as building documentation or running checks and tests on the code. If you can install 
+LMessage makes use of fabric_ to define tasks such as building documentation or running checks and tests on the code. If you can install 
 
 .. _fabric: https://fabfile.org
 
@@ -77,7 +77,7 @@ Key management
 Nitro key
 ^^^^^^^^^
 
-Regular contributors are enouraged to take further steps to protect their key and the Nitro Key (Start) is recommended by the BitMessage project for this purpose.
+Regular contributors are enouraged to take further steps to protect their key and the Nitro Key (Start) is recommended by the LMessage project for this purpose.
 
 Debian-quirks
 ~~~~~~~~~~~~~

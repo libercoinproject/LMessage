@@ -14,9 +14,9 @@ for i in $srcdir/*ts; do
 	o="${o,,}"
 	o="${o//@/_}"
 	echo "$i -> $o"
-	mv "$i" "$HOME/src/PyBitmessage/src/translations/$o"
+	mv "$i" "$HOME/src/PyLMessage/src/translations/$o"
 done
 
 rm -rf -- $srcdir
 
-lrelease-qt4 "$HOME/src/PyBitmessage/src/translations/bitmessage.pro"
+lrelease-qt4 "$HOME/src/PyLMessage/src/translations/lmessage.pro"

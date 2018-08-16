@@ -14,7 +14,7 @@ def signal_handler(signal, frame):
     print "Got signal %i in %s/%s" % (signal, current_process().name, current_thread().name)
     if current_process().name != "MainProcess":
         raise StopIteration("Interrupted")
-    if current_thread().name != "PyBitmessage":
+    if current_thread().name != "PyLMessage":
         return
     shutdown = 1
 
@@ -43,7 +43,7 @@ signal.signal(signal.SIGTERM, signal_handler)
 
 bso = ctypes.CDLL(os.path.join("bitmsghash", "bitmsghash.so"))
 
-bmpow = bso.BitmessagePOW
+bmpow = bso.LMessagePOW
 bmpow.restype = ctypes.c_ulonglong
 
 _doCPoW(2**44, "")

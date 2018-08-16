@@ -34,9 +34,9 @@ class objectProcessor(threading.Thread):
     """
     def __init__(self):
         """
-        It may be the case that the last time Bitmessage was running,
+        It may be the case that the last time LMessage was running,
         the user closed it before it finished processing everything in the
-        objectProcessorQueue. Assuming that Bitmessage wasn't closed
+        objectProcessorQueue. Assuming that LMessage wasn't closed
         forcefully, it should have saved the data in the queue into the
         objectprocessorqueue table. Let's pull it out.
         """
@@ -263,7 +263,7 @@ class objectProcessor(threading.Thread):
             return
         if addressVersion > 4 or addressVersion == 1:
             logger.info(
-                'This version of Bitmessage cannot handle version %s'
+                'This version of LMessage cannot handle version %s'
                 ' addresses.', addressVersion)
             return
         if addressVersion == 2:
@@ -566,7 +566,7 @@ class objectProcessor(threading.Thread):
             'As a matter of intellectual curiosity, here is the Bitcoin'
             ' address associated with the keys owned by the other person:'
             ' %s  ..and here is the testnet address: %s. The other person'
-            ' must take their private signing key from Bitmessage and'
+            ' must take their private signing key from LMessage and'
             ' import it into Bitcoin (or a service like Blockchain.info)'
             ' for it to be of any use. Do not use this unless you know'
             ' what you are doing.',
@@ -627,7 +627,7 @@ class objectProcessor(threading.Thread):
         blockMessage = False
         # If we are using a blacklist
         if BMConfigParser().get(
-                'bitmessagesettings', 'blackwhitelist') == 'black':
+                'lmessagesettings', 'blackwhitelist') == 'black':
             queryreturn = sqlQuery(
                 "SELECT label FROM blacklist where address=? and enabled='1'",
                 fromAddress)
@@ -674,10 +674,10 @@ class objectProcessor(threading.Thread):
             # outside command to let some program know that a new message
             # has arrived.
             if BMConfigParser().safeGetBoolean(
-                    'bitmessagesettings', 'apienabled'):
+                    'lmessagesettings', 'apienabled'):
                 try:
                     apiNotifyPath = BMConfigParser().get(
-                        'bitmessagesettings', 'apinotifypath')
+                        'lmessagesettings', 'apinotifypath')
                 except:
                     apiNotifyPath = ''
                 if apiNotifyPath != '':
@@ -780,7 +780,7 @@ class objectProcessor(threading.Thread):
             logger.info(
                 'Cannot decode incoming broadcast versions less than 4'
                 ' or higher than 5. Assuming the sender isn\'t being silly,'
-                ' you should upgrade Bitmessage because this message shall'
+                ' you should upgrade LMessage because this message shall'
                 ' be ignored.'
             )
             return
@@ -853,7 +853,7 @@ class objectProcessor(threading.Thread):
                 logger.warning(
                     'Cannot decode senderAddressVersion other than 2 or 3.'
                     ' Assuming the sender isn\'t being silly, you should'
-                    ' upgrade Bitmessage because this message shall be'
+                    ' upgrade LMessage because this message shall be'
                     ' ignored.'
                 )
                 return
@@ -862,7 +862,7 @@ class objectProcessor(threading.Thread):
                 logger.info(
                     'Cannot decode senderAddressVersion less than 4 for'
                     ' broadcast version number 5. Assuming the sender'
-                    ' isn\'t being silly, you should upgrade Bitmessage'
+                    ' isn\'t being silly, you should upgrade LMessage'
                     ' because this message shall be ignored.'
                 )
                 return
@@ -994,10 +994,10 @@ class objectProcessor(threading.Thread):
         # If we are behaving as an API then we might need to run an
         # outside command to let some program know that a new message
         # has arrived.
-        if BMConfigParser().safeGetBoolean('bitmessagesettings', 'apienabled'):
+        if BMConfigParser().safeGetBoolean('lmessagesettings', 'apienabled'):
             try:
                 apiNotifyPath = BMConfigParser().get(
-                    'bitmessagesettings', 'apinotifypath')
+                    'lmessagesettings', 'apinotifypath')
             except:
                 apiNotifyPath = ''
             if apiNotifyPath != '':

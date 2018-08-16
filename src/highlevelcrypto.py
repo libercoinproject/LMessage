@@ -33,10 +33,10 @@ def decryptFast(msg,cryptor):
 # Signs with hex private key
 def sign(msg,hexPrivkey):
     # pyelliptic is upgrading from SHA1 to SHA256 for signing. We must 
-    # upgrade PyBitmessage gracefully. 
+    # upgrade PyLMessage gracefully. 
     # https://github.com/yann2192/pyelliptic/pull/33
     # More discussion: https://github.com/yann2192/pyelliptic/issues/32
-    digestAlg = BMConfigParser().safeGet('bitmessagesettings', 'digestalg', 'sha1')
+    digestAlg = BMConfigParser().safeGet('lmessagesettings', 'digestalg', 'sha1')
     if digestAlg == "sha1":
         # SHA1, this will eventually be deprecated
         return makeCryptor(hexPrivkey).sign(msg, digest_alg=OpenSSL.digest_ecdsa_sha1)

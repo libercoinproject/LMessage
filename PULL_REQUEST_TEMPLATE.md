@@ -1,6 +1,6 @@
-## Repository contributions to the PyBitmessage project
+## Repository contributions to the PyLMessage project
 
-- You can get paid for merged commits if you register at [Tip4Commit](https://tip4commit.com/github/Bitmessage/PyBitmessage)
+- You can get paid for merged commits if you register at [Tip4Commit](https://tip4commit.com/github/LMessage/PyLMessage)
 
 ### Code
 
@@ -19,15 +19,15 @@
 
 ## Translations
 
-- For helping with translations, please use [Transifex](https://www.transifex.com/bitmessage-project/pybitmessage/).
+- For helping with translations, please use [Transifex](https://www.transifex.com/lmessage-project/pylmessage/).
 - There is no need to submit pull requests for translations.
 - For translating technical terms it is recommended to consult the [Microsoft Language Portal](https://www.microsoft.com/Language/en-US/Default.aspx).
 
 ### Gitiquette
 
-- Make the pull request against the ["v0.6" branch](https://github.com/Bitmessage/PyBitmessage/tree/v0.6)
+- Make the pull request against the ["v0.6" branch](https://github.com/LMessage/PyLMessage/tree/v0.6)
 - PGP-sign the commits included in the pull request
 - Use references to tickets, e.g. `addresses #123` or `fixes #234` in your commit messages
 - Try to use a good editor that removes trailing whitespace, highlights potential python issues and uses unix line endings
-- If for some reason you don't want to use github, you can submit the patch using Bitmessage to the "bitmessage" chan, or to one of the developers.
+- If for some reason you don't want to use github, you can submit the patch using LMessage to the "lmessage" chan, or to one of the developers.
 

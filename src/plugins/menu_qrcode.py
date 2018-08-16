@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-A menu plugin showing QR-Code for bitmessage address in modal dialog.
+A menu plugin showing QR-Code for lmessage address in modal dialog.
 """
 
 from PyQt4 import QtGui, QtCore
 import qrcode
 
-from pybitmessage.tr import _translate
+from pylmessage.tr import _translate
 
 
 # http://stackoverflow.com/questions/20452486
@@ -77,7 +77,7 @@ def connect_plugin(form):
             dialog = form.qrcode_dialog
         except AttributeError:
             form.qrcode_dialog = dialog = QRCodeDialog(form)
-        dialog.render('bitmessage:' + str(form.getCurrentAccount()))
+        dialog.render('lmessage:' + str(form.getCurrentAccount()))
         dialog.exec_()
 
     return on_action_ShowQR, _translate("MainWindow", "Show QR-code")

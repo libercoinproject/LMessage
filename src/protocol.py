@@ -190,13 +190,13 @@ def checkSocksIP(host):
     """Predicate to check if we're using a SOCKS proxy"""
     try:
         if state.socksIP is None or not state.socksIP:
-            state.socksIP = socket.gethostbyname(BMConfigParser().get("bitmessagesettings", "sockshostname"))
+            state.socksIP = socket.gethostbyname(BMConfigParser().get("lmessagesettings", "sockshostname"))
     # uninitialised
     except NameError:
-        state.socksIP = socket.gethostbyname(BMConfigParser().get("bitmessagesettings", "sockshostname"))
+        state.socksIP = socket.gethostbyname(BMConfigParser().get("lmessagesettings", "sockshostname"))
     # resolving failure
     except socket.gaierror:
-        state.socksIP = BMConfigParser().get("bitmessagesettings", "sockshostname")
+        state.socksIP = BMConfigParser().get("lmessagesettings", "sockshostname")
     return state.socksIP == host
 
 
@@ -206,7 +206,7 @@ def isProofOfWorkSufficient(data,
                             recvTime=0):
     """
     Validate an object's Proof of Work using method described in:
-        https://bitmessage.org/wiki/Proof_of_work
+        https://lmessage.org/wiki/Proof_of_work
     Arguments:
         int nonceTrialsPerByte (default: from default.py)
         int payloadLengthExtraBytes (default: from default.py)
@@ -276,21 +276,21 @@ def assembleVersionMessage(remoteHost, remotePort, participatingStreams, server=
     # = 127.0.0.1. This will be ignored by the remote host. The actual remote connected IP will be used.
     payload += '\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xFF\xFF' + pack('>L', 2130706433)
     # we have a separate extPort and incoming over clearnet or outgoing through clearnet
-    if BMConfigParser().safeGetBoolean('bitmessagesettings', 'upnp') and state.extPort \
+    if BMConfigParser().safeGetBoolean('lmessagesettings', 'upnp') and state.extPort \
         and ((server and not checkSocksIP(remoteHost)) or
-             (BMConfigParser().get("bitmessagesettings", "socksproxytype") == "none" and not server)):
+             (BMConfigParser().get("lmessagesettings", "socksproxytype") == "none" and not server)):
         payload += pack('>H', state.extPort)
     elif checkSocksIP(remoteHost) and server:  # incoming connection over Tor
-        payload += pack('>H', BMConfigParser().getint('bitmessagesettings', 'onionport'))
+        payload += pack('>H', BMConfigParser().getint('lmessagesettings', 'onionport'))
     else:  # no extPort and not incoming over Tor
-        payload += pack('>H', BMConfigParser().getint('bitmessagesettings', 'port'))
+        payload += pack('>H', BMConfigParser().getint('lmessagesettings', 'port'))
 
     random.seed()
     if nodeid is not None:
         payload += nodeid[0:8]
     else:
         payload += eightBytesOfRandomDataUsedToDetectConnectionsToSelf
-    userAgent = '/PyBitmessage:' + softwareVersion + '/'
+    userAgent = '/PyLMessage:' + softwareVersion + '/'
     payload += encodeVarint(len(userAgent))
     payload += userAgent
 

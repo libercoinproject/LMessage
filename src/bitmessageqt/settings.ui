@@ -40,14 +40,14 @@
        <item row="0" column="0">
         <widget class="QCheckBox" name="checkBoxStartOnLogon">
          <property name="text">
-          <string>Start Bitmessage on user login</string>
+          <string>Start LMessage on user login</string>
          </property>
         </widget>
        </item>
        <item row="1" column="0" colspan="2">
         <widget class="QCheckBox" name="checkBoxStartInTray">
          <property name="text">
-          <string>Start Bitmessage in the tray (don't show main window)</string>
+          <string>Start LMessage in the tray (don't show main window)</string>
          </property>
         </widget>
        </item>
@@ -84,7 +84,7 @@
           </sizepolicy>
          </property>
          <property name="text">
-          <string>In Portable Mode, messages and config files are stored in the same directory as the program rather than the normal application-data folder. This makes it convenient to run Bitmessage from a USB thumb drive.</string>
+          <string>In Portable Mode, messages and config files are stored in the same directory as the program rather than the normal application-data folder. This makes it convenient to run LMessage from a USB thumb drive.</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -499,7 +499,7 @@
        <item row="0" column="0" colspan="3">
         <widget class="QLabel" name="label_8">
          <property name="text">
-          <string>When someone sends you a message, their computer must first complete some work. The difficulty of this work, by default, is 1. You may raise this default for new addresses you create by changing the values here. Any new addresses you create will require senders to meet the higher difficulty. There is one exception: if you add a friend or acquaintance to your address book, Bitmessage will automatically notify them when you next send a message that they need only complete the minimum amount of work: difficulty 1. </string>
+          <string>When someone sends you a message, their computer must first complete some work. The difficulty of this work, by default, is 1. You may raise this default for new addresses you create by changing the values here. Any new addresses you create will require senders to meet the higher difficulty. There is one exception: if you add a friend or acquaintance to your address book, LMessage will automatically notify them when you next send a message that they need only complete the minimum amount of work: difficulty 1. </string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -721,7 +721,7 @@
        <item row="0" column="0" colspan="3">
         <widget class="QLabel" name="label_16">
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Bitmessage can utilize a different Bitcoin-based program called Namecoin to make addresses human-friendly. For example, instead of having to tell your friend your long Bitmessage address, you can simply tell him to send a message to &lt;span style=&quot; font-style:italic;&quot;&gt;test. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;(Getting your own Bitmessage address into Namecoin is still rather difficult).&lt;/p&gt;&lt;p&gt;Bitmessage can use either namecoind directly or a running nmcontrol instance.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;LMessage can utilize a different Bitcoin-based program called Namecoin to make addresses human-friendly. For example, instead of having to tell your friend your long LMessage address, you can simply tell him to send a message to &lt;span style=&quot; font-style:italic;&quot;&gt;test. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;(Getting your own LMessage address into Namecoin is still rather difficult).&lt;/p&gt;&lt;p&gt;LMessage can use either namecoind directly or a running nmcontrol instance.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -891,7 +891,7 @@
        <item row="0" column="0" colspan="3">
         <widget class="QLabel" name="label_7">
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;By default, if you send a message to someone and he is offline for more than two days, Bitmessage will send the message again after an additional two days. This will be continued with exponential backoff forever; messages will be resent after 5, 10, 20 days ect. until the receiver acknowledges them. Here you may change that behavior by having Bitmessage give up after a certain number of days or months.&lt;/p&gt;&lt;p&gt;Leave these input fields blank for the default behavior. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;By default, if you send a message to someone and he is offline for more than two days, LMessage will send the message again after an additional two days. This will be continued with exponential backoff forever; messages will be resent after 5, 10, 20 days ect. until the receiver acknowledges them. Here you may change that behavior by having LMessage give up after a certain number of days or months.&lt;/p&gt;&lt;p&gt;Leave these input fields blank for the default behavior. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -1034,7 +1034,7 @@
   <tabstop>buttonBox</tabstop>
  </tabstops>
  <resources>
-  <include location="bitmessage_icons.qrc"/>
+  <include location="lmessage_icons.qrc"/>
  </resources>
  <connections>
   <connection>

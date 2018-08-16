@@ -11,8 +11,8 @@ class NewAddressWizardIntroPage(QtGui.QWizardPage):
             "You can still change your mind later, and register/unregister with an email service provider.\n\n")
         label.setWordWrap(True)
 
-        self.emailAsWell = QtGui.QRadioButton("Combined email and bitmessage address")
-        self.onlyBM = QtGui.QRadioButton("Bitmessage-only address (no email)")
+        self.emailAsWell = QtGui.QRadioButton("Combined email and lmessage address")
+        self.onlyBM = QtGui.QRadioButton("LMessage-only address (no email)")
         self.emailAsWell.setChecked(True)
         self.registerField("emailAsWell", self.emailAsWell)
         self.registerField("onlyBM", self.onlyBM)
@@ -107,8 +107,8 @@ class NewAddressWizardRandomPage(QtGui.QWizardPage):
         self.registerField("radioButtonExisting", self.radioButtonExisting)
         self.registerField("comboBoxExisting", self.comboBoxExisting)
 
-#        self.emailAsWell = QtGui.QRadioButton("Combined email and bitmessage account")
-#        self.onlyBM = QtGui.QRadioButton("Bitmessage-only account (no email)")
+#        self.emailAsWell = QtGui.QRadioButton("Combined email and lmessage account")
+#        self.onlyBM = QtGui.QRadioButton("LMessage-only account (no email)")
 #        self.emailAsWell.setChecked(True)
 
     def nextId(self):
@@ -218,8 +218,8 @@ class NewAddressWizardWaitPage(QtGui.QWizardPage):
         self.progressBar.setMaximum(100)
         self.progressBar.setValue(0)
         
-#        self.emailAsWell = QtGui.QRadioButton("Combined email and bitmessage account")
-#        self.onlyBM = QtGui.QRadioButton("Bitmessage-only account (no email)")
+#        self.emailAsWell = QtGui.QRadioButton("Combined email and lmessage account")
+#        self.onlyBM = QtGui.QRadioButton("LMessage-only account (no email)")
 #        self.emailAsWell.setChecked(True)
 
         layout = QtGui.QVBoxLayout()

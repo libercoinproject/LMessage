@@ -1,5 +1,5 @@
 /*
-* This is based on the John The Ripper SHA512 code, modified for double SHA512 and for use as a miner in Bitmessage.
+* This is based on the John The Ripper SHA512 code, modified for double SHA512 and for use as a miner in LMessage.
 * This software is originally Copyright (c) 2012 Myrice <qqlddg at gmail dot com>
 * and it is hereby released to the general public under the following terms:
 * Redistribution and use in source and binary forms, with or without modification, are permitted.

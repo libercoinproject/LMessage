@@ -20,7 +20,7 @@ def getDiscoveredPeer():
     return peer
 
 def chooseConnection(stream):
-    haveOnion = BMConfigParser().safeGet("bitmessagesettings", "socksproxytype")[0:5] == 'SOCKS'
+    haveOnion = BMConfigParser().safeGet("lmessagesettings", "socksproxytype")[0:5] == 'SOCKS'
     if state.trustedPeer:
         return state.trustedPeer
     try:

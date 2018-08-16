@@ -1,5 +1,5 @@
-# This is an example of how to connect to and use the Bitmessage API.
-# See https://bitmessage.org/wiki/API_Reference
+# This is an example of how to connect to and use the LMessage API.
+# See https://lmessage.org/wiki/API_Reference
 
 import xmlrpclib
 import json
@@ -7,7 +7,7 @@ import time
 
 if __name__ == '__main__':
 
-    api = xmlrpclib.ServerProxy("http://bradley:password@localhost:8442/")
+    api = xmlrpclib.ServerProxy("http://bradley:password@localhost:1783/")
 
     print 'Let\'s test the API first.'
     inputstr1 = "hello"
@@ -37,7 +37,7 @@ if __name__ == '__main__':
     #print jsonDeterministicAddresses
     #print json.loads(jsonDeterministicAddresses)
 
-    #print 'Uncomment this next line to print the first deterministic address that would be generated with the given passphrase. This will Not add it to the Bitmessage interface or the keys.dat file.'
+    #print 'Uncomment this next line to print the first deterministic address that would be generated with the given passphrase. This will Not add it to the LMessage interface or the keys.dat file.'
     #print api.getDeterministicAddress('asdfasdfqwser'.encode('base64'),4,1)
 
     #print 'Uncomment this line to subscribe to an address. (You must use your own address, this one is invalid).'

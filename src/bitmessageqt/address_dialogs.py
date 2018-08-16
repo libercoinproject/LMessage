@@ -46,7 +46,7 @@ class AddressCheckMixin(object):
             self.labelAddressCheck.setText(_translate(
                 "MainWindow",
                 "The version number of this address is higher than this"
-                " software can support. Please upgrade Bitmessage."
+                " software can support. Please upgrade LMessage."
             ))
         elif status == 'invalidcharacters':
             self.labelAddressCheck.setText(_translate(

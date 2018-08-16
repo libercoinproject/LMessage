@@ -38,16 +38,16 @@ class Blacklist(QtGui.QWidget, RetranslateMixin):
             "rerenderBlackWhiteList()"), self.rerenderBlackWhiteList)
 
     def click_radioButtonBlacklist(self):
-        if BMConfigParser().get('bitmessagesettings', 'blackwhitelist') == 'white':
-            BMConfigParser().set('bitmessagesettings', 'blackwhitelist', 'black')
+        if BMConfigParser().get('lmessagesettings', 'blackwhitelist') == 'white':
+            BMConfigParser().set('lmessagesettings', 'blackwhitelist', 'black')
             BMConfigParser().save()
             # self.tableWidgetBlacklist.clearContents()
             self.tableWidgetBlacklist.setRowCount(0)
             self.rerenderBlackWhiteList()
 
     def click_radioButtonWhitelist(self):
-        if BMConfigParser().get('bitmessagesettings', 'blackwhitelist') == 'black':
-            BMConfigParser().set('bitmessagesettings', 'blackwhitelist', 'white')
+        if BMConfigParser().get('lmessagesettings', 'blackwhitelist') == 'black':
+            BMConfigParser().set('lmessagesettings', 'blackwhitelist', 'white')
             BMConfigParser().save()
             # self.tableWidgetBlacklist.clearContents()
             self.tableWidgetBlacklist.setRowCount(0)
@@ -64,7 +64,7 @@ class Blacklist(QtGui.QWidget, RetranslateMixin):
                 # address book. The user cannot add it again or else it will
                 # cause problems when updating and deleting the entry.
                 t = (address,)
-                if BMConfigParser().get('bitmessagesettings', 'blackwhitelist') == 'black':
+                if BMConfigParser().get('lmessagesettings', 'blackwhitelist') == 'black':
                     sql = '''select * from blacklist where address=?'''
                 else:
                     sql = '''select * from whitelist where address=?'''
@@ -82,7 +82,7 @@ class Blacklist(QtGui.QWidget, RetranslateMixin):
                     self.tableWidgetBlacklist.setItem(0, 1, newItem)
                     self.tableWidgetBlacklist.setSortingEnabled(True)
                     t = (str(self.NewBlacklistDialogInstance.lineEditLabel.text().toUtf8()), address, True)
-                    if BMConfigParser().get('bitmessagesettings', 'blackwhitelist') == 'black':
+                    if BMConfigParser().get('lmessagesettings', 'blackwhitelist') == 'black':
                         sql = '''INSERT INTO blacklist VALUES (?,?,?)'''
                     else:
                         sql = '''INSERT INTO whitelist VALUES (?,?,?)'''
@@ -147,12 +147,12 @@ class Blacklist(QtGui.QWidget, RetranslateMixin):
 
     def rerenderBlackWhiteList(self):
         tabs = self.parent().parent()
-        if BMConfigParser().get('bitmessagesettings', 'blackwhitelist') == 'black':
+        if BMConfigParser().get('lmessagesettings', 'blackwhitelist') == 'black':
             tabs.setTabText(tabs.indexOf(self), _translate('blacklist', 'Blacklist'))
         else:
             tabs.setTabText(tabs.indexOf(self), _translate('blacklist', 'Whitelist'))
         self.tableWidgetBlacklist.setRowCount(0)
-        listType = BMConfigParser().get('bitmessagesettings', 'blackwhitelist')
+        listType = BMConfigParser().get('lmessagesettings', 'blackwhitelist')
         if listType == 'black':
             queryreturn = sqlQuery('''SELECT label, address, enabled FROM blacklist''')
         else:
@@ -184,7 +184,7 @@ class Blacklist(QtGui.QWidget, RetranslateMixin):
             currentRow, 0).text().toUtf8()
         addressAtCurrentRow = self.tableWidgetBlacklist.item(
             currentRow, 1).text()
-        if BMConfigParser().get('bitmessagesettings', 'blackwhitelist') == 'black':
+        if BMConfigParser().get('lmessagesettings', 'blackwhitelist') == 'black':
             sqlExecute(
                 '''DELETE FROM blacklist WHERE label=? AND address=?''',
                 str(labelAtCurrentRow), str(addressAtCurrentRow))
@@ -213,7 +213,7 @@ class Blacklist(QtGui.QWidget, RetranslateMixin):
             currentRow, 0).setTextColor(QtGui.QApplication.palette().text().color())
         self.tableWidgetBlacklist.item(
             currentRow, 1).setTextColor(QtGui.QApplication.palette().text().color())
-        if BMConfigParser().get('bitmessagesettings', 'blackwhitelist') == 'black':
+        if BMConfigParser().get('lmessagesettings', 'blackwhitelist') == 'black':
             sqlExecute(
                 '''UPDATE blacklist SET enabled=1 WHERE address=?''',
                 str(addressAtCurrentRow))
@@ -230,7 +230,7 @@ class Blacklist(QtGui.QWidget, RetranslateMixin):
             currentRow, 0).setTextColor(QtGui.QColor(128, 128, 128))
         self.tableWidgetBlacklist.item(
             currentRow, 1).setTextColor(QtGui.QColor(128, 128, 128))
-        if BMConfigParser().get('bitmessagesettings', 'blackwhitelist') == 'black':
+        if BMConfigParser().get('lmessagesettings', 'blackwhitelist') == 'black':
             sqlExecute(
                 '''UPDATE blacklist SET enabled=0 WHERE address=?''', str(addressAtCurrentRow))
         else:

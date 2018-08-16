@@ -34,13 +34,13 @@ class InstallCmd(install):
         except os.error:
             pass
         shutil.copyfile(
-            'desktop/can-icon.svg', 'desktop/icons/scalable/pybitmessage.svg')
+            'desktop/can-icon.svg', 'desktop/icons/scalable/pylmessage.svg')
         try:
             os.makedirs('desktop/icons/24x24')
         except os.error:
             pass
         shutil.copyfile(
-            'desktop/icon24.png', 'desktop/icons/24x24/pybitmessage.png')
+            'desktop/icon24.png', 'desktop/icons/24x24/pylmessage.png')
 
         return install.run(self)
 
@@ -51,22 +51,22 @@ if __name__ == "__main__":
         README = f.read()
 
     bitmsghash = Extension(
-        'pybitmessage.bitmsghash.bitmsghash',
+        'pylmessage.bitmsghash.bitmsghash',
         sources=['src/bitmsghash/bitmsghash.cpp'],
         libraries=['pthread', 'crypto'],
     )
 
     installRequires = []
     packages = [
-        'pybitmessage',
-        'pybitmessage.bitmessageqt',
-        'pybitmessage.bitmessagecurses',
-        'pybitmessage.messagetypes',
-        'pybitmessage.network',
-        'pybitmessage.pyelliptic',
-        'pybitmessage.socks',
-        'pybitmessage.storage',
-        'pybitmessage.plugins'
+        'pylmessage',
+        'pylmessage.lmessageqt',
+        'pylmessage.lmessagecurses',
+        'pylmessage.messagetypes',
+        'pylmessage.network',
+        'pylmessage.pyelliptic',
+        'pylmessage.socks',
+        'pylmessage.storage',
+        'pylmessage.plugins'
     ]
 
     # this will silently accept alternative providers of msgpack
@@ -80,19 +80,19 @@ if __name__ == "__main__":
             import umsgpack
             installRequires.append("umsgpack")
         except ImportError:
-            packages += ['pybitmessage.fallback', 'pybitmessage.fallback.umsgpack']
+            packages += ['pylmessage.fallback', 'pylmessage.fallback.umsgpack']
 
     dist = setup(
-        name='pybitmessage',
+        name='pylmessage',
         version=softwareVersion,
-        description="Reference client for Bitmessage: "
+        description="Reference client for LMessage: "
         "a P2P communications protocol",
         long_description=README,
         license='MIT',
         # TODO: add author info
         #author='',
         #author_email='',
-        url='https://bitmessage.org',
+        url='https://lmessage.org',
         # TODO: add keywords
         #keywords='',
         install_requires=installRequires,
@@ -105,46 +105,46 @@ if __name__ == "__main__":
             "Topic :: Security :: Cryptography",
             "Topic :: Software Development :: Libraries :: Python Modules",
         ],
-        package_dir={'pybitmessage': 'src'},
+        package_dir={'pylmessage': 'src'},
         packages=packages,
         package_data={'': [
-            'bitmessageqt/*.ui', 'bitmsghash/*.cl', 'sslkeys/*.pem',
+            'lmessageqt/*.ui', 'bitmsghash/*.cl', 'sslkeys/*.pem',
             'translations/*.ts', 'translations/*.qm',
             'images/*.png', 'images/*.ico', 'images/*.icns'
         ]},
         data_files=[
             ('share/applications/',
-                ['desktop/pybitmessage.desktop']),
+                ['desktop/pylmessage.desktop']),
             ('share/icons/hicolor/scalable/apps/',
-                ['desktop/icons/scalable/pybitmessage.svg']),
+                ['desktop/icons/scalable/pylmessage.svg']),
             ('share/icons/hicolor/24x24/apps/',
-                ['desktop/icons/24x24/pybitmessage.png'])
+                ['desktop/icons/24x24/pylmessage.png'])
         ],
         ext_modules=[bitmsghash],
         zip_safe=False,
         entry_points={
-            'bitmessage.gui.menu': [
-                'address.qrcode = pybitmessage.plugins.menu_qrcode [qrcode]'
+            'lmessage.gui.menu': [
+                'address.qrcode = pylmessage.plugins.menu_qrcode [qrcode]'
             ],
-            'bitmessage.notification.message': [
-                'notify2 = pybitmessage.plugins.notification_notify2'
+            'lmessage.notification.message': [
+                'notify2 = pylmessage.plugins.notification_notify2'
                 '[gir, notify2]'
             ],
-            'bitmessage.notification.sound': [
-                'theme.canberra = pybitmessage.plugins.sound_canberra',
-                'file.gstreamer = pybitmessage.plugins.sound_gstreamer'
+            'lmessage.notification.sound': [
+                'theme.canberra = pylmessage.plugins.sound_canberra',
+                'file.gstreamer = pylmessage.plugins.sound_gstreamer'
                 '[gir]',
-                'file.fallback = pybitmessage.plugins.sound_playfile'
+                'file.fallback = pylmessage.plugins.sound_playfile'
                 '[sound]'
             ],
-            'bitmessage.indicator': [
+            'lmessage.indicator': [
                 'libmessaging ='
-                'pybitmessage.plugins.indicator_libmessaging [gir]'
+                'pylmessage.plugins.indicator_libmessaging [gir]'
             ],
             # 'console_scripts': [
-            #        'pybitmessage = pybitmessage.bitmessagemain:main'
+            #        'pylmessage = pylmessage.lmessagemain:main'
             # ]
         },
-        scripts=['src/pybitmessage'],
+        scripts=['src/pylmessage'],
         cmdclass={'install': InstallCmd}
     )

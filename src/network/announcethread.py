@@ -31,5 +31,5 @@ class AnnounceThread(threading.Thread, StoppableThread):
             if not connection.announcing:
                 continue
             for stream in state.streamsInWhichIAmParticipating:
-                addr = (stream, state.Peer('127.0.0.1', BMConfigParser().safeGetInt("bitmessagesettings", "port")), time.time())
+                addr = (stream, state.Peer('127.0.0.1', BMConfigParser().safeGetInt("lmessagesettings", "port")), time.time())
                 connection.append_write_buf(BMProto.assembleAddr([addr]))

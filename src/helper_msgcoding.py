@@ -16,10 +16,10 @@ import messagetypes
 from tr import _translate
 import helper_random
 
-BITMESSAGE_ENCODING_IGNORE = 0
-BITMESSAGE_ENCODING_TRIVIAL = 1
-BITMESSAGE_ENCODING_SIMPLE = 2
-BITMESSAGE_ENCODING_EXTENDED = 3
+LMESSAGE_ENCODING_IGNORE = 0
+LMESSAGE_ENCODING_TRIVIAL = 1
+LMESSAGE_ENCODING_SIMPLE = 2
+LMESSAGE_ENCODING_EXTENDED = 3
 
 
 class MsgEncodeException(Exception):
@@ -36,15 +36,15 @@ class DecompressionSizeException(MsgDecodeException):
 
 
 class MsgEncode(object):
-    def __init__(self, message, encoding=BITMESSAGE_ENCODING_SIMPLE):
+    def __init__(self, message, encoding=LMESSAGE_ENCODING_SIMPLE):
         self.data = None
         self.encoding = encoding
         self.length = 0
-        if self.encoding == BITMESSAGE_ENCODING_EXTENDED:
+        if self.encoding == LMESSAGE_ENCODING_EXTENDED:
             self.encodeExtended(message)
-        elif self.encoding == BITMESSAGE_ENCODING_SIMPLE:
+        elif self.encoding == LMESSAGE_ENCODING_SIMPLE:
             self.encodeSimple(message)
-        elif self.encoding == BITMESSAGE_ENCODING_TRIVIAL:
+        elif self.encoding == LMESSAGE_ENCODING_TRIVIAL:
             self.encodeTrivial(message)
         else:
             raise MsgEncodeException("Unknown encoding %i" % (encoding))
@@ -73,12 +73,12 @@ class MsgEncode(object):
 class MsgDecode(object):
     def __init__(self, encoding, data):
         self.encoding = encoding
-        if self.encoding == BITMESSAGE_ENCODING_EXTENDED:
+        if self.encoding == LMESSAGE_ENCODING_EXTENDED:
             self.decodeExtended(data)
-        elif self.encoding in [BITMESSAGE_ENCODING_SIMPLE, BITMESSAGE_ENCODING_TRIVIAL]:
+        elif self.encoding in [LMESSAGE_ENCODING_SIMPLE, LMESSAGE_ENCODING_TRIVIAL]:
             self.decodeSimple(data)
         else:
-            self.body = _translate("MsgDecode", "The message has an unknown encoding.\nPerhaps you should upgrade Bitmessage.")
+            self.body = _translate("MsgDecode", "The message has an unknown encoding.\nPerhaps you should upgrade LMessage.")
             self.subject = _translate("MsgDecode", "Unknown encoding")
 
     def decodeExtended(self, data):

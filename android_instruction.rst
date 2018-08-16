@@ -1,4 +1,4 @@
-PyBitmessage(Android)
+PyLMessage(Android)
 
 This sample aims to be as close to a real world example of a mobile. It has a more refined design and also provides a practical example of how a mobile app would interact and communicate with its adresses.
 

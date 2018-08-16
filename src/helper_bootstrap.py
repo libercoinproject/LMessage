@@ -12,7 +12,7 @@ def dns():
     DNS bootstrap. This could be programmed to use the SOCKS proxy to do the
     DNS lookup some day but for now we will just rely on the entries in
     defaultKnownNodes.py. Hopefully either they are up to date or the user
-    has run Bitmessage recently without SOCKS turned on and received good
+    has run LMessage recently without SOCKS turned on and received good
     bootstrap nodes using that method.
     """
 
@@ -26,17 +26,17 @@ def dns():
             addr, method)
         knownnodes.addKnownNode(stream, state.Peer(addr, port))
 
-    proxy_type = BMConfigParser().get('bitmessagesettings', 'socksproxytype')
+    proxy_type = BMConfigParser().get('lmessagesettings', 'socksproxytype')
 
     if proxy_type == 'none':
         for port in [8080, 8444]:
             try:
                 for item in socket.getaddrinfo(
-                        'bootstrap%s.bitmessage.org' % port, 80):
+                        'bootstrap%s.lmessage.org' % port, 80):
                     try_add_known_node(1, item[4][0], port)
             except:
                 logger.error(
-                    'bootstrap%s.bitmessage.org DNS bootstrapping failed.',
+                    'bootstrap%s.lmessage.org DNS bootstrapping failed.',
                     port, exc_info=True
                 )
     elif proxy_type == 'SOCKS5':
@@ -50,19 +50,19 @@ def dns():
             sock.settimeout(20)
             proxytype = socks.PROXY_TYPE_SOCKS5
             sockshostname = BMConfigParser().get(
-                'bitmessagesettings', 'sockshostname')
+                'lmessagesettings', 'sockshostname')
             socksport = BMConfigParser().getint(
-                'bitmessagesettings', 'socksport')
+                'lmessagesettings', 'socksport')
             # Do domain name lookups through the proxy;
             # though this setting doesn't really matter since we won't
             # be doing any domain name lookups anyway.
             rdns = True
             if BMConfigParser().getboolean(
-                    'bitmessagesettings', 'socksauthentication'):
+                    'lmessagesettings', 'socksauthentication'):
                 socksusername = BMConfigParser().get(
-                    'bitmessagesettings', 'socksusername')
+                    'lmessagesettings', 'socksusername')
                 sockspassword = BMConfigParser().get(
-                    'bitmessagesettings', 'sockspassword')
+                    'lmessagesettings', 'sockspassword')
                 sock.setproxy(
                     proxytype, sockshostname, socksport, rdns,
                     socksusername, sockspassword)
@@ -70,7 +70,7 @@ def dns():
                 sock.setproxy(
                     proxytype, sockshostname, socksport, rdns)
             try:
-                ip = sock.resolve("bootstrap" + str(port) + ".bitmessage.org")
+                ip = sock.resolve("bootstrap" + str(port) + ".lmessage.org")
                 sock.shutdown(socket.SHUT_RDWR)
                 sock.close()
             except:

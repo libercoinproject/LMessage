@@ -128,7 +128,7 @@
            <string>Rating</string>
           </property>
           <property name="toolTip">
-           <string>PyBitmessage tracks the success rate of connection attempts to individual nodes. The rating ranges from -1 to 1 and affects the likelihood of selecting the node in the future</string>
+           <string>PyLMessage tracks the success rate of connection attempts to individual nodes. The rating ranges from -1 to 1 and affects the likelihood of selecting the node in the future</string>
           </property>
          </column>
          <column>
@@ -296,11 +296,11 @@
   <customwidget>
    <class>STableWidget</class>
    <extends>QTableWidget</extends>
-   <header>bitmessageqt/settingsmixin.h</header>
+   <header>lmessageqt/settingsmixin.h</header>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="bitmessage_icons.qrc"/>
+  <include location="lmessage_icons.qrc"/>
  </resources>
  <connections/>
 </ui>

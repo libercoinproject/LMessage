@@ -58,7 +58,7 @@ class IconGlossaryDialog(QtGui.QDialog, RetranslateMixin):
         self.labelPortNumber.setText(_translate(
             "iconGlossaryDialog",
             "You are using TCP port %1. (This can be changed in the settings)."
-            ).arg(config.getint('bitmessagesettings', 'port')))
+            ).arg(config.getint('lmessagesettings', 'port')))
         self.setFixedSize(QtGui.QWidget.sizeHint(self))
 
 

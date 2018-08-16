@@ -3,7 +3,7 @@
 This program can be used to print out everything in your Inbox or Sent folders and also take things out of the trash.
 Scroll down to the bottom to see the functions that you can uncomment. Save then run this file.
 The functions which only read the database file seem to function just
-fine even if you have Bitmessage running but you should definitly close
+fine even if you have LMessage running but you should definitly close
 it before running the functions that make changes (like taking items out
 of the trash).
 """

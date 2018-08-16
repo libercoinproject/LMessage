@@ -98,11 +98,11 @@
   <customwidget>
    <class>STableWidget</class>
    <extends>QTableWidget</extends>
-   <header>bitmessageqt/settingsmixin.h</header>
+   <header>lmessageqt/settingsmixin.h</header>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="bitmessage_icons.qrc"/>
+  <include location="lmessage_icons.qrc"/>
  </resources>
  <connections/>
 </ui>

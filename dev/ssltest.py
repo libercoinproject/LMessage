@@ -6,7 +6,7 @@ import sys
 import traceback
 
 HOST = "127.0.0.1"
-PORT = 8912
+PORT = 1775
 
 def sslProtocolVersion():
     # sslProtocolVersion

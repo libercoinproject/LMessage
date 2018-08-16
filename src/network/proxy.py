@@ -88,9 +88,9 @@ class Proxy(AdvancedDispatcher):
         self.isOutbound = True
         self.fullyEstablished = False
         self.create_socket(socket.AF_INET, socket.SOCK_STREAM)
-        if BMConfigParser().safeGetBoolean("bitmessagesettings", "socksauthentication"):
-            self.auth = (BMConfigParser().safeGet("bitmessagesettings", "socksusername"),
-                    BMConfigParser().safeGet("bitmessagesettings", "sockspassword"))
+        if BMConfigParser().safeGetBoolean("lmessagesettings", "socksauthentication"):
+            self.auth = (BMConfigParser().safeGet("lmessagesettings", "socksusername"),
+                    BMConfigParser().safeGet("lmessagesettings", "sockspassword"))
         else:
             self.auth = None
         if address.host.endswith(".onion") and self.onion_proxy is not None:

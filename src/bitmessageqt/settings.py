@@ -15,7 +15,7 @@ from sys import platform
 
 from PyQt4 import QtCore, QtGui
 
-from . import bitmessage_icons_rc  # pylint: disable=unused-import
+from . import lmessage_icons_rc  # pylint: disable=unused-import
 from .languagebox import LanguageBox
 
 
@@ -481,12 +481,12 @@ class Ui_settingsDialog(object):
         """Re-translate the UI into the supported languages"""
 
         settingsDialog.setWindowTitle(_translate("settingsDialog", "Settings", None))
-        self.checkBoxStartOnLogon.setText(_translate("settingsDialog", "Start Bitmessage on user login", None))
+        self.checkBoxStartOnLogon.setText(_translate("settingsDialog", "Start LMessage on user login", None))
         self.groupBoxTray.setTitle(_translate("settingsDialog", "Tray", None))
         self.checkBoxStartInTray.setText(
             _translate(
                 "settingsDialog",
-                "Start Bitmessage in the tray (don\'t show main window)",
+                "Start LMessage in the tray (don\'t show main window)",
                 None))
         self.checkBoxMinimizeToTray.setText(_translate("settingsDialog", "Minimize to tray", None))
         self.checkBoxTrayOnClose.setText(_translate("settingsDialog", "Close to tray", None))
@@ -503,7 +503,7 @@ class Ui_settingsDialog(object):
                 "settingsDialog",
                 "In Portable Mode, messages and config files are stored in the same directory as the"
                 " program rather than the normal application-data folder. This makes it convenient to"
-                " run Bitmessage from a USB thumb drive.",
+                " run LMessage from a USB thumb drive.",
                 None))
         self.checkBoxWillinglySendToMobile.setText(
             _translate(
@@ -559,7 +559,7 @@ class Ui_settingsDialog(object):
             "When someone sends you a message, their computer must first complete some work. The difficulty of this"
             " work, by default, is 1. You may raise this default for new addresses you create by changing the values"
             " here. Any new addresses you create will require senders to meet the higher difficulty. There is one"
-            " exception: if you add a friend or acquaintance to your address book, Bitmessage will automatically"
+            " exception: if you add a friend or acquaintance to your address book, LMessage will automatically"
             " notify them when you next send a message that they need only complete the minimum amount of"
             " work: difficulty 1. ",
             None))
@@ -591,11 +591,11 @@ class Ui_settingsDialog(object):
         self.labelOpenCL.setText(_translate("settingsDialog", "Hardware GPU acceleration (OpenCL):", None))
         self.label_16.setText(_translate(
             "settingsDialog",
-            "<html><head/><body><p>Bitmessage can utilize a different Bitcoin-based program called Namecoin to make"
-            " addresses human-friendly. For example, instead of having to tell your friend your long Bitmessage"
+            "<html><head/><body><p>LMessage can utilize a different Bitcoin-based program called Namecoin to make"
+            " addresses human-friendly. For example, instead of having to tell your friend your long LMessage"
             " address, you can simply tell him to send a message to <span style=\" font-style:italic;\">test."
-            " </span></p><p>(Getting your own Bitmessage address into Namecoin is still rather difficult).</p>"
-            "<p>Bitmessage can use either namecoind directly or a running nmcontrol instance.</p></body></html>",
+            " </span></p><p>(Getting your own LMessage address into Namecoin is still rather difficult).</p>"
+            "<p>LMessage can use either namecoind directly or a running nmcontrol instance.</p></body></html>",
             None))
         self.label_17.setText(_translate("settingsDialog", "Host:", None))
         self.label_18.setText(_translate("settingsDialog", "Port:", None))
@@ -613,9 +613,9 @@ class Ui_settingsDialog(object):
         self.label_7.setText(_translate(
             "settingsDialog",
             "<html><head/><body><p>By default, if you send a message to someone and he is offline for more than two"
-            " days, Bitmessage will send the message again after an additional two days. This will be continued with"
+            " days, LMessage will send the message again after an additional two days. This will be continued with"
             " exponential backoff forever; messages will be resent after 5, 10, 20 days ect. until the receiver"
-            " acknowledges them. Here you may change that behavior by having Bitmessage give up after a certain"
+            " acknowledges them. Here you may change that behavior by having LMessage give up after a certain"
             " number of days or months.</p><p>Leave these input fields blank for the default behavior."
             " </p></body></html>",
             None))

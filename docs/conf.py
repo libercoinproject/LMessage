@@ -29,9 +29,9 @@ import version
 
 # -- Project information -----------------------------------------------------
 
-project = u'PyBitmessage'
-copyright = u'2018, The Bitmessage Team'  # pylint: disable=redefined-builtin
-author = u'The Bitmessage Team'
+project = u'PyLMessage'
+copyright = u'2018, The LMessage Team'  # pylint: disable=redefined-builtin
+author = u'The LMessage Team'
 
 # The short X.Y version
 version = unicode(version.softwareVersion)
@@ -122,7 +122,7 @@ html_theme_options = {
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'PyBitmessagedoc'
+htmlhelp_basename = 'PyLMessagedoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -149,8 +149,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'PyBitmessage.tex', u'PyBitmessage Documentation',
-     u'The Bitmessage Team', 'manual'),
+    (master_doc, 'PyLMessage.tex', u'PyLMessage Documentation',
+     u'The LMessage Team', 'manual'),
 ]
 
 
@@ -159,7 +159,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'pybitmessage', u'PyBitmessage Documentation',
+    (master_doc, 'pylmessage', u'PyLMessage Documentation',
      [author], 1)
 ]
 
@@ -170,8 +170,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'PyBitmessage', u'PyBitmessage Documentation',
-     author, 'PyBitmessage', 'One line description of project.',
+    (master_doc, 'PyLMessage', u'PyLMessage Documentation',
+     author, 'PyLMessage', 'One line description of project.',
      'Miscellaneous'),
 ]
 

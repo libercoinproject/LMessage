@@ -59,7 +59,7 @@ class addressGenerator(threading.Thread, StoppableThread):
                 try:
                     numberOfNullBytesDemandedOnFrontOfRipeHash = \
                         BMConfigParser().getint(
-                            'bitmessagesettings',
+                            'lmessagesettings',
                             'numberofnullbytesonaddress'
                         )
                 except:
@@ -76,7 +76,7 @@ class addressGenerator(threading.Thread, StoppableThread):
                 try:
                     numberOfNullBytesDemandedOnFrontOfRipeHash = \
                         BMConfigParser().getint(
-                            'bitmessagesettings',
+                            'lmessagesettings',
                             'numberofnullbytesonaddress'
                         )
                 except:
@@ -100,14 +100,14 @@ class addressGenerator(threading.Thread, StoppableThread):
                     addressVersionNumber)
             if nonceTrialsPerByte == 0:
                 nonceTrialsPerByte = BMConfigParser().getint(
-                    'bitmessagesettings', 'defaultnoncetrialsperbyte')
+                    'lmessagesettings', 'defaultnoncetrialsperbyte')
             if nonceTrialsPerByte < \
                     defaults.networkDefaultProofOfWorkNonceTrialsPerByte:
                 nonceTrialsPerByte = \
                     defaults.networkDefaultProofOfWorkNonceTrialsPerByte
             if payloadLengthExtraBytes == 0:
                 payloadLengthExtraBytes = BMConfigParser().getint(
-                    'bitmessagesettings', 'defaultpayloadlengthextrabytes')
+                    'lmessagesettings', 'defaultpayloadlengthextrabytes')
             if payloadLengthExtraBytes < \
                     defaults.networkDefaultPayloadLengthExtraBytes:
                 payloadLengthExtraBytes = \
@@ -121,7 +121,7 @@ class addressGenerator(threading.Thread, StoppableThread):
                 # This next section is a little bit strange. We're going
                 # to generate keys over and over until we find one
                 # that starts with either \x00 or \x00\x00. Then when
-                # we pack them into a Bitmessage address, we won't store
+                # we pack them into a LMessage address, we won't store
                 # the \x00 or \x00\x00 bytes thus making the address shorter.
                 startTime = time.time()
                 numberOfAddressesWeHadToMakeBeforeWeFoundOneWithTheCorrectRipePrefix = 0
@@ -215,7 +215,7 @@ class addressGenerator(threading.Thread, StoppableThread):
                     logger.warning(
                         'You are creating deterministic'
                         ' address(es) using a blank passphrase.'
-                        ' Bitmessage will do it but it is rather stupid.')
+                        ' LMessage will do it but it is rather stupid.')
                 if command == 'createDeterministicAddresses':
                     queues.UISignalQueue.put((
                         'updateStatusBar',
@@ -235,7 +235,7 @@ class addressGenerator(threading.Thread, StoppableThread):
                     # going to generate keys over and over until we find
                     # one that has a RIPEMD hash that starts with either
                     # \x00 or \x00\x00. Then when we pack them into a
-                    # Bitmessage address, we won't store the \x00 or
+                    # LMessage address, we won't store the \x00 or
                     # \x00\x00 bytes thus making the address shorter.
                     startTime = time.time()
                     numberOfAddressesWeHadToMakeBeforeWeFoundOneWithTheCorrectRipePrefix = 0
@@ -284,7 +284,7 @@ class addressGenerator(threading.Thread, StoppableThread):
 
                     saveAddressToDisk = True
                     # If we are joining an existing chan, let us check
-                    # to make sure it matches the provided Bitmessage address
+                    # to make sure it matches the provided LMessage address
                     if command == 'joinChan':
                         if address != chanAddress:
                             listOfNewAddressesToSendOutThroughTheAPI.append(

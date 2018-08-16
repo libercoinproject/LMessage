@@ -7,7 +7,7 @@ from time import time
 
 # Ubuntu: apt-get install python-pybloomfiltermmap
 
-conn = sqlite3.connect(path.join(getenv("HOME"), '.config/PyBitmessage/messages.dat'))
+conn = sqlite3.connect(path.join(getenv("HOME"), '.config/PyLMessage/messages.dat'))
 
 conn.text_factory = str
 cur = conn.cursor()

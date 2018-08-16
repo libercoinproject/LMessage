@@ -750,13 +750,13 @@ def sendMessage(sender="", recv="", broadcast=None, subject="", body="", reply=F
                     set_background_title(d, "Recipient address error")
                     err = "Could not decode" + addr + " : " + status + "\n\n"
                     if status == "missingbm":
-                        err += "Bitmessage addresses should start with \"BM-\"."
+                        err += "LMessage addresses should start with \"BM-\"."
                     elif status == "checksumfailed":
                         err += "The address was not typed or copied correctly."
                     elif status == "invalidcharacters":
                         err += "The address contains invalid characters."
                     elif status == "versiontoohigh":
-                        err += "The address version is too high. Either you need to upgrade your Bitmessage software or your acquaintance is doing something clever."
+                        err += "The address version is too high. Either you need to upgrade your LMessage software or your acquaintance is doing something clever."
                     elif status == "ripetooshort":
                         err += "Some data encoded in the address is too short. There might be something wrong with the software of your acquaintance."
                     elif status == "ripetoolong":
@@ -774,12 +774,12 @@ def sendMessage(sender="", recv="", broadcast=None, subject="", body="", reply=F
                         continue
                     if stream > 1 or stream == 0:
                         set_background_title(d, "Recipient address error")
-                        scrollbox(d, unicode("Bitmessage currently only supports stream numbers of 1, unlike as requested for address " + addr + "."))
+                        scrollbox(d, unicode("LMessage currently only supports stream numbers of 1, unlike as requested for address " + addr + "."))
                         continue
                     if len(shared.connectedHostsList) == 0:
                         set_background_title(d, "Not connected warning")
                         scrollbox(d, unicode("Because you are not currently connected to the network, "))
-                    stealthLevel = BMConfigParser().safeGetInt('bitmessagesettings', 'ackstealthlevel')
+                    stealthLevel = BMConfigParser().safeGetInt('lmessagesettings', 'ackstealthlevel')
                     ackdata = genAckPayload(streamNumber, stealthLevel)
                     sqlExecute(
                         "INSERT INTO sent VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
@@ -797,7 +797,7 @@ def sendMessage(sender="", recv="", broadcast=None, subject="", body="", reply=F
                         0, # retryNumber
                         "sent",
                         2, # encodingType
-                        BMConfigParser().getint('bitmessagesettings', 'ttl'))
+                        BMConfigParser().getint('lmessagesettings', 'ttl'))
                     queues.workerQueue.put(("sendmessage", addr))
     else: # Broadcast
         if recv == "":
@@ -824,7 +824,7 @@ def sendMessage(sender="", recv="", broadcast=None, subject="", body="", reply=F
                 0, # retryNumber
                 "sent", # folder
                 2, # encodingType
-                BMConfigParser().getint('bitmessagesettings', 'ttl'))
+                BMConfigParser().getint('lmessagesettings', 'ttl'))
             queues.workerQueue.put(('sendbroadcast', ''))
 
 def loadInbox():
@@ -971,7 +971,7 @@ def loadSubscriptions():
     subscriptions.reverse()
 def loadBlackWhiteList():
     global bwtype
-    bwtype = BMConfigParser().get("bitmessagesettings", "blackwhitelist")
+    bwtype = BMConfigParser().get("lmessagesettings", "blackwhitelist")
     if bwtype == "black":
         ret = sqlQuery("SELECT label, address, enabled FROM blacklist")
     else:

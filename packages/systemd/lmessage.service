@@ -1,0 +1,18 @@
+[Unit]
+Description=LMessage Daemon
+After=network.target auditd.service
+
+[Service]
+ExecStart=/usr/bin/python2 /usr/src/PyLMessage/src/lmessagemain.py
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=on-failure
+Type=forking
+PIDFile=/var/lib/lmessage/.config/PyLMessage/singleton.lock
+User=lmessage
+Group=nogroup
+WorkingDirectory=/var/lib/lmessage
+Environment="HOME=/var/lib/lmessage"
+
+[Install]
+WantedBy=multi-user.target

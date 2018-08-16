@@ -128,7 +128,7 @@ class AccountColor(AccountMixin):  # pylint: disable=too-few-public-methods
 
 
 class BMAccount(object):
-    """Encapsulate a Bitmessage account"""
+    """Encapsulate a LMessage account"""
 
     def __init__(self, address=None):
         self.address = address
@@ -147,7 +147,7 @@ class BMAccount(object):
                 self.type = AccountMixin.SUBSCRIPTION
 
     def getLabel(self, address=None):
-        """Get a label for this bitmessage account"""
+        """Get a label for this lmessage account"""
         if address is None:
             address = self.address
         label = BMConfigParser().safeGet(address, 'label', address)
@@ -216,7 +216,7 @@ class GatewayAccount(BMAccount):
 
         # pylint: disable=unused-variable
         status, addressVersionNumber, streamNumber, ripe = decodeAddress(self.toAddress)
-        stealthLevel = BMConfigParser().safeGetInt('bitmessagesettings', 'ackstealthlevel')
+        stealthLevel = BMConfigParser().safeGetInt('lmessagesettings', 'ackstealthlevel')
         ackdata = genAckPayload(streamNumber, stealthLevel)
         sqlExecute(
             '''INSERT INTO sent VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)''',
@@ -235,7 +235,7 @@ class GatewayAccount(BMAccount):
             'sent',  # folder
             2,  # encodingtype
             # not necessary to have a TTL higher than 2 days
-            min(BMConfigParser().getint('bitmessagesettings', 'ttl'), 86400 * 2)
+            min(BMConfigParser().getint('lmessagesettings', 'ttl'), 86400 * 2)
         )
 
         queues.workerQueue.put(('sendmessage', self.toAddress))

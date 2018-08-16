@@ -1,10 +1,10 @@
 # Copyright (c) 2012-2016 Jonathan Warren
-# Copyright (c) 2012-2018 The Bitmessage developers
+# Copyright (c) 2012-2018 The LMessage developers
 
 """
-This is not what you run to run the Bitmessage API. Instead, enable the API
-( https://bitmessage.org/wiki/API ) and optionally enable daemon mode
-( https://bitmessage.org/wiki/Daemon ) then run bitmessagemain.py.
+This is not what you run to run the LMessage API. Instead, enable the API
+( https://lmessage.org/wiki/API ) and optionally enable daemon mode
+( https://lmessage.org/wiki/Daemon ) then run lmessagemain.py.
 """
 
 import base64
@@ -131,9 +131,9 @@ class MySimpleXMLRPCRequestHandler(SimpleXMLRPCRequestHandler):
             emailid, password = encstr.decode('base64').split(':')
             return (
                 emailid ==
-                BMConfigParser().get('bitmessagesettings', 'apiusername')
+                BMConfigParser().get('lmessagesettings', 'apiusername')
                 and password ==
-                BMConfigParser().get('bitmessagesettings', 'apipassword')
+                BMConfigParser().get('lmessagesettings', 'apipassword')
             )
         else:
             logger.warning(
@@ -280,22 +280,22 @@ class MySimpleXMLRPCRequestHandler(SimpleXMLRPCRequestHandler):
             label, = params
             eighteenByteRipe = False
             nonceTrialsPerByte = BMConfigParser().get(
-                'bitmessagesettings', 'defaultnoncetrialsperbyte')
+                'lmessagesettings', 'defaultnoncetrialsperbyte')
             payloadLengthExtraBytes = BMConfigParser().get(
-                'bitmessagesettings', 'defaultpayloadlengthextrabytes')
+                'lmessagesettings', 'defaultpayloadlengthextrabytes')
         elif len(params) == 2:
             label, eighteenByteRipe = params
             nonceTrialsPerByte = BMConfigParser().get(
-                'bitmessagesettings', 'defaultnoncetrialsperbyte')
+                'lmessagesettings', 'defaultnoncetrialsperbyte')
             payloadLengthExtraBytes = BMConfigParser().get(
-                'bitmessagesettings', 'defaultpayloadlengthextrabytes')
+                'lmessagesettings', 'defaultpayloadlengthextrabytes')
         elif len(params) == 3:
             label, eighteenByteRipe, totalDifficulty = params
             nonceTrialsPerByte = int(
                 defaults.networkDefaultProofOfWorkNonceTrialsPerByte
                 * totalDifficulty)
             payloadLengthExtraBytes = BMConfigParser().get(
-                'bitmessagesettings', 'defaultpayloadlengthextrabytes')
+                'lmessagesettings', 'defaultpayloadlengthextrabytes')
         elif len(params) == 4:
             label, eighteenByteRipe, totalDifficulty, \
                 smallMessageDifficulty = params
@@ -330,41 +330,41 @@ class MySimpleXMLRPCRequestHandler(SimpleXMLRPCRequestHandler):
             streamNumber = 0
             eighteenByteRipe = False
             nonceTrialsPerByte = BMConfigParser().get(
-                'bitmessagesettings', 'defaultnoncetrialsperbyte')
+                'lmessagesettings', 'defaultnoncetrialsperbyte')
             payloadLengthExtraBytes = BMConfigParser().get(
-                'bitmessagesettings', 'defaultpayloadlengthextrabytes')
+                'lmessagesettings', 'defaultpayloadlengthextrabytes')
         elif len(params) == 2:
             passphrase, numberOfAddresses = params
             addressVersionNumber = 0
             streamNumber = 0
             eighteenByteRipe = False
             nonceTrialsPerByte = BMConfigParser().get(
-                'bitmessagesettings', 'defaultnoncetrialsperbyte')
+                'lmessagesettings', 'defaultnoncetrialsperbyte')
             payloadLengthExtraBytes = BMConfigParser().get(
-                'bitmessagesettings', 'defaultpayloadlengthextrabytes')
+                'lmessagesettings', 'defaultpayloadlengthextrabytes')
         elif len(params) == 3:
             passphrase, numberOfAddresses, addressVersionNumber = params
             streamNumber = 0
             eighteenByteRipe = False
             nonceTrialsPerByte = BMConfigParser().get(
-                'bitmessagesettings', 'defaultnoncetrialsperbyte')
+                'lmessagesettings', 'defaultnoncetrialsperbyte')
             payloadLengthExtraBytes = BMConfigParser().get(
-                'bitmessagesettings', 'defaultpayloadlengthextrabytes')
+                'lmessagesettings', 'defaultpayloadlengthextrabytes')
         elif len(params) == 4:
             passphrase, numberOfAddresses, addressVersionNumber, \
                 streamNumber = params
             eighteenByteRipe = False
             nonceTrialsPerByte = BMConfigParser().get(
-                'bitmessagesettings', 'defaultnoncetrialsperbyte')
+                'lmessagesettings', 'defaultnoncetrialsperbyte')
             payloadLengthExtraBytes = BMConfigParser().get(
-                'bitmessagesettings', 'defaultpayloadlengthextrabytes')
+                'lmessagesettings', 'defaultpayloadlengthextrabytes')
         elif len(params) == 5:
             passphrase, numberOfAddresses, addressVersionNumber, \
                 streamNumber, eighteenByteRipe = params
             nonceTrialsPerByte = BMConfigParser().get(
-                'bitmessagesettings', 'defaultnoncetrialsperbyte')
+                'lmessagesettings', 'defaultnoncetrialsperbyte')
             payloadLengthExtraBytes = BMConfigParser().get(
-                'bitmessagesettings', 'defaultpayloadlengthextrabytes')
+                'lmessagesettings', 'defaultpayloadlengthextrabytes')
         elif len(params) == 6:
             passphrase, numberOfAddresses, addressVersionNumber, \
                 streamNumber, eighteenByteRipe, totalDifficulty = params
@@ -372,7 +372,7 @@ class MySimpleXMLRPCRequestHandler(SimpleXMLRPCRequestHandler):
                 defaults.networkDefaultProofOfWorkNonceTrialsPerByte
                 * totalDifficulty)
             payloadLengthExtraBytes = BMConfigParser().get(
-                'bitmessagesettings', 'defaultpayloadlengthextrabytes')
+                'lmessagesettings', 'defaultpayloadlengthextrabytes')
         elif len(params) == 7:
             passphrase, numberOfAddresses, addressVersionNumber, \
                 streamNumber, eighteenByteRipe, totalDifficulty, \
@@ -414,7 +414,7 @@ class MySimpleXMLRPCRequestHandler(SimpleXMLRPCRequestHandler):
                 5, 'You have (accidentally?) specified too many addresses to'
                 ' make. Maximum 999. This check only exists to prevent'
                 ' mischief; if you really want to create more addresses than'
-                ' this, contact the Bitmessage developers and we can modify'
+                ' this, contact the LMessage developers and we can modify'
                 ' the check or you can do it yourself by searching the source'
                 ' code for this message.')
         queues.apiAddressGeneratorReturnQueue.queue.clear()
@@ -868,7 +868,7 @@ class MySimpleXMLRPCRequestHandler(SimpleXMLRPCRequestHandler):
             raise APIError(14, 'Your fromAddress is disabled. Cannot send.')
 
         stealthLevel = BMConfigParser().safeGetInt(
-            'bitmessagesettings', 'ackstealthlevel')
+            'lmessagesettings', 'ackstealthlevel')
         ackdata = genAckPayload(streamNumber, stealthLevel)
 
         t = ('',
@@ -1032,10 +1032,10 @@ class MySimpleXMLRPCRequestHandler(SimpleXMLRPCRequestHandler):
         return json.dumps(data, indent=4, separators=(',', ': '))
 
     def HandleDisseminatePreEncryptedMsg(self, params):
-        # The device issuing this command to PyBitmessage supplies a msg
+        # The device issuing this command to PyLMessage supplies a msg
         # object that has already been encrypted but which still needs the POW
-        # to be done. PyBitmessage accepts this msg object and sends it out
-        # to the rest of the Bitmessage network as if it had generated
+        # to be done. PyLMessage accepts this msg object and sends it out
+        # to the rest of the LMessage network as if it had generated
         # the message itself. Please do not yet add this to the api doc.
         if len(params) != 3:
             raise APIError(0, 'I need 3 parameter!')
@@ -1079,10 +1079,10 @@ class MySimpleXMLRPCRequestHandler(SimpleXMLRPCRequestHandler):
         return 'Trashed sent message (assuming message existed).'
 
     def HandleDissimatePubKey(self, params):
-        # The device issuing this command to PyBitmessage supplies a pubkey
-        # object to be disseminated to the rest of the Bitmessage network.
-        # PyBitmessage accepts this pubkey object and sends it out to the rest
-        # of the Bitmessage network as if it had generated the pubkey object
+        # The device issuing this command to PyLMessage supplies a pubkey
+        # object to be disseminated to the rest of the LMessage network.
+        # PyLMessage accepts this pubkey object and sends it out to the rest
+        # of the LMessage network as if it had generated the pubkey object
         # itself. Please do not yet add this to the api doc.
         if len(params) != 1:
             raise APIError(0, 'I need 1 parameter!')
@@ -1175,7 +1175,7 @@ class MySimpleXMLRPCRequestHandler(SimpleXMLRPCRequestHandler):
             'numberOfBroadcastsProcessed': shared.numberOfBroadcastsProcessed,
             'numberOfPubkeysProcessed': shared.numberOfPubkeysProcessed,
             'networkStatus': networkStatus,
-            'softwareName': 'PyBitmessage',
+            'softwareName': 'PyLMessage',
             'softwareVersion': softwareVersion
             }, indent=4, separators=(',', ': '))
 

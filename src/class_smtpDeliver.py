@@ -49,7 +49,7 @@ class smtpDeliver(threading.Thread, StoppableThread):
                 pass
             elif command == 'displayNewInboxMessage':
                 inventoryHash, toAddress, fromAddress, subject, body = data
-                dest = BMConfigParser().safeGet("bitmessagesettings", "smtpdeliver", '')
+                dest = BMConfigParser().safeGet("lmessagesettings", "smtpdeliver", '')
                 if dest == '':
                     continue
                 try:

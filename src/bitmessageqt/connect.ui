@@ -11,13 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Bitmessage</string>
+   <string>LMessage</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0" colspan="2">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Bitmessage won't connect to anyone until you let it. </string>
+      <string>LMessage won't connect to anyone until you let it. </string>
      </property>
     </widget>
    </item>

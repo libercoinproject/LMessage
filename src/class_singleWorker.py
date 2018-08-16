@@ -232,7 +232,7 @@ class singleWorker(threading.Thread, StoppableThread):
         # Look up my stream number based on my address hash
         """configSections = shared.config.addresses()
         for addressInKeysFile in configSections:
-            if addressInKeysFile != 'bitmessagesettings':
+            if addressInKeysFile != 'lmessagesettings':
                 status, addressVersionNumber, streamNumber, \
                     hashFromThisParticularAddress = \
                     decodeAddress(addressInKeysFile)
@@ -865,7 +865,7 @@ class singleWorker(threading.Thread, StoppableThread):
                     # if we are Not willing to include the receiver's
                     # RIPE hash on the message..
                     if not shared.BMConfigParser().safeGetBoolean(
-                            'bitmessagesettings', 'willinglysendtomobile'
+                            'lmessagesettings', 'willinglysendtomobile'
                     ):
                         logger.info(
                             'The receiver is a mobile user but the'
@@ -957,20 +957,20 @@ class singleWorker(threading.Thread, StoppableThread):
                     if status != 'forcepow':
                         if (requiredAverageProofOfWorkNonceTrialsPerByte
                             > BMConfigParser().getint(
-                                'bitmessagesettings',
+                                'lmessagesettings',
                                 'maxacceptablenoncetrialsperbyte'
                             ) and
                             BMConfigParser().getint(
-                                'bitmessagesettings',
+                                'lmessagesettings',
                                 'maxacceptablenoncetrialsperbyte'
                             ) != 0) or (
                                 requiredPayloadLengthExtraBytes
                                 > BMConfigParser().getint(
-                                    'bitmessagesettings',
+                                    'lmessagesettings',
                                     'maxacceptablepayloadlengthextrabytes'
                                 ) and
                                 BMConfigParser().getint(
-                                    'bitmessagesettings',
+                                    'lmessagesettings',
                                     'maxacceptablepayloadlengthextrabytes'
                                 ) != 0):
                             # The demanded difficulty is more than
@@ -1045,7 +1045,7 @@ class singleWorker(threading.Thread, StoppableThread):
             payload += encodeVarint(fromStreamNumber)
             # Bitfield of features and behaviors
             # that can be expected from me. (See
-            # https://bitmessage.org/wiki/Protocol_specification#Pubkey_bitfield_features)
+            # https://lmessage.org/wiki/Protocol_specification#Pubkey_bitfield_features)
             payload += protocol.getBitfield(fromaddress)
 
             # We need to convert our private keys to public keys in order
@@ -1260,10 +1260,10 @@ class singleWorker(threading.Thread, StoppableThread):
                 # outside command to let some program know that a new message
                 # has arrived.
                 if BMConfigParser().safeGetBoolean(
-                        'bitmessagesettings', 'apienabled'):
+                        'lmessagesettings', 'apienabled'):
                     try:
                         apiNotifyPath = BMConfigParser().get(
-                            'bitmessagesettings', 'apinotifypath')
+                            'lmessagesettings', 'apinotifypath')
                     except:
                         apiNotifyPath = ''
                     if apiNotifyPath != '':

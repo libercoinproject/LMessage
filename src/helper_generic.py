@@ -70,7 +70,7 @@ def signal_handler(signal, frame):
         raise SystemExit
     if "PoolWorker" in process.name:
         raise SystemExit
-    if threading.current_thread().name not in ("PyBitmessage", "MainThread"):
+    if threading.current_thread().name not in ("PyLMessage", "MainThread"):
         return
     logger.error("Got signal %i", signal)
     if shared.thisapp.daemon or not state.enableGUI:  # FIXME redundant?

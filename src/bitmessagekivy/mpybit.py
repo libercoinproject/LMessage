@@ -128,7 +128,7 @@ class Create(Screen, Widget):
                     if statusIconColor == 'red':
                         print("shared.statusIconColor == 'red'")
                     stealthLevel = BMConfigParser().safeGetInt(
-                        'bitmessagesettings', 'ackstealthlevel')
+                        'lmessagesettings', 'ackstealthlevel')
                     ackdata = genAckPayload(streamNumber, stealthLevel)
                     t = ()
                     sqlExecute(
@@ -147,7 +147,7 @@ class Create(Screen, Widget):
                         0,
                         'sent',
                         encoding,
-                        BMConfigParser().getint('bitmessagesettings', 'ttl'))
+                        BMConfigParser().getint('lmessagesettings', 'ttl'))
                     toLabel = ''
                     queues.workerQueue.put(('sendmessage', toAddress))
                     print("sqlExecute successfully #####    ##################")

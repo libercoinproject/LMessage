@@ -17,7 +17,7 @@ class LanguageBox(QtGui.QComboBox):
         self.addItem(QtGui.QApplication.translate("settingsDialog", "System Settings", "system"), "system")
         self.setCurrentIndex(0)
         self.setInsertPolicy(QtGui.QComboBox.InsertAlphabetically)
-        for translationFile in sorted(glob.glob(os.path.join(localesPath, "bitmessage_*.qm"))):
+        for translationFile in sorted(glob.glob(os.path.join(localesPath, "lmessage_*.qm"))):
             localeShort = os.path.split(translationFile)[1].split("_", 1)[1][:-3]
             locale = QtCore.QLocale(QtCore.QString(localeShort))
 
@@ -29,7 +29,7 @@ class LanguageBox(QtGui.QComboBox):
                 self.addItem(locale.nativeLanguageName(), localeShort)
 
         configuredLocale = BMConfigParser().safeGet(
-            'bitmessagesettings', 'userlocale', "system")
+            'lmessagesettings', 'userlocale', "system")
         for i in range(self.count()):
             if self.itemData(i) == configuredLocale:
                 self.setCurrentIndex(i)

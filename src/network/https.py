@@ -12,7 +12,7 @@ class HTTPSClient(HTTPClient, TLSHandshake):
         if not hasattr(self, '_map'):
             asyncore.dispatcher.__init__(self)
         self.tlsDone = False
-#        TLSHandshake.__init__(self, address=(host, 443), certfile='/home/shurdeek/src/PyBitmessage/sslsrc/keys/cert.pem', keyfile='/home/shurdeek/src/PyBitmessage/src/sslkeys/key.pem', server_side=False, ciphers='AECDH-AES256-SHA')
+#        TLSHandshake.__init__(self, address=(host, 443), certfile='/home/shurdeek/src/PyLMessage/sslsrc/keys/cert.pem', keyfile='/home/shurdeek/src/PyLMessage/src/sslkeys/key.pem', server_side=False, ciphers='AECDH-AES256-SHA')
         HTTPClient.__init__(self, host, path, connect=False)
         TLSHandshake.__init__(self, address=(host, 443), server_side=False)
 

@@ -4,7 +4,7 @@
 #  Copyright (C) 2011 Yann GUIBET <yannguibet@gmail.com>
 #  See LICENSE for details.
 #
-#  Software slightly changed by Jonathan Warren <bitmessage at-symbol jonwarren.org>
+#  Software slightly changed by Jonathan Warren <lmessage at-symbol jonwarren.org>
 
 import sys
 import ctypes
@@ -475,7 +475,7 @@ class _OpenSSL:
         # tests on various operating systems, while generating hundreds of gigabytes of random 
         # strings of various sizes I could not get an error to occur. Also Bitcoin doesn't check
         # the return value of RAND_bytes either. 
-        # Fixed in Bitmessage version 0.4.2 (in source code on 2013-10-13)
+        # Fixed in LMessage version 0.4.2 (in source code on 2013-10-13)
         while self.RAND_bytes(buffer, size) != 1:
             import time
             time.sleep(1)

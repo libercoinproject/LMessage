@@ -16,10 +16,10 @@ Contributing
 - Search the `issue tracker` on github or open a  new issue
 - Send bug report to the chan
 
-.. _Report: https://github.com/Bitmessage/PyBitmessage/issues
-.. _Develop: https://github.com/Bitmessage/PyBitmessage
-.. _Translate: https://www.transifex.com/bitmessage-project/pybitmessage/
-.. _Donate: https://tip4commit.com/github/Bitmessage/PyBitmessage
-.. _PR: https://github.com/Bitmessage/PyBitmessage/pulls
-.. _`issue tracker`: https://github.com/Bitmessage/PyBitmessage/issues
+.. _Report: https://github.com/LMessage/PyLMessage/issues
+.. _Develop: https://github.com/LMessage/PyLMessage
+.. _Translate: https://www.transifex.com/lmessage-project/pylmessage/
+.. _Donate: https://tip4commit.com/github/LMessage/PyLMessage
+.. _PR: https://github.com/LMessage/PyLMessage/pulls
+.. _`issue tracker`: https://github.com/LMessage/PyLMessage/issues
    contributing/*

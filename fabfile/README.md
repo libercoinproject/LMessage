@@ -6,7 +6,7 @@ return values and manage stdio. Tasks may be targetted at particular hosts or gr
 
 # Using Fabric
 
-    $ cd PyBitmessage
+    $ cd PyLMessage
     $ fab <task_name>
 
 For a list of available commands:
@@ -33,14 +33,14 @@ Furthermore, you can use -- to run arbitrary shell commands rather than tasks:
    [fabric-virtualenv](https://pypi.org/project/fabric-virtualenv/) and
    [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/) 
    system-wide using your preferred method.
- * Create a virtualenv called pybitmessage and install fabfile/requirements.txt
-    $ mkvirtualenv -r fabfile/requirements.txt --system-site-packages pybitmessage-devops
+ * Create a virtualenv called pylmessage and install fabfile/requirements.txt
+    $ mkvirtualenv -r fabfile/requirements.txt --system-site-packages pylmessage-devops
  * Ensure you can ssh localhost with no intervention, which may include:
    * ssh [sshd_config server] and [ssh_config client] configuration
    * authorized_keys file
    * load ssh key
    * check(!) and accept the host key
- * From the PyBitmessage directory you can now run fab commands!
+ * From the PyLMessage directory you can now run fab commands!
 
 # Rationale
 
